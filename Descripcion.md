@@ -1,11 +1,11 @@
-# 
+# GESTION DE EMPRESA DE TRANSPORTE
 
 Gestionar una base de datos de una empresa de transporte para facilitar su uso y mejorar los dividendos.
 ## Integrantes del equipo
 
 Diego Herrera Sánchez -(dhsanchez)
 
-Abel Bagué Madrigal -
+Abel Bagué Madrigal - (abelbague)
 
 Carlos Martínez Ramos
 
