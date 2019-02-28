@@ -7,7 +7,7 @@ Diego Herrera Sánchez -(dhsanchez)
 
 Abel Bagué Madrigal - (abelbague)
 
-Carlos Martínez Ramos
+Carlos Martínez Ramos - (carlosmartinezramos)
 
 ## Objetivos del trabajo
 
