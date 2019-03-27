@@ -3,7 +3,7 @@
 void main()
 {
 	int a, b, c, d;
-	char id;
+	char id[20];
 	
 	printf("\n\t > Bienvenido a TRANSFUTURE\n\n");
 	printf("\n\tIniciar sesion(1)\t Registrarse(2): ");
@@ -13,14 +13,22 @@ void main()
 	{
 		case 1:
 			printf("Usuario:\t");
-			scanf("%s", id);
+			scanf("%s",id);
 		case 2:
 		printf("\n > Identificate:\n\tSoy cliente(1)\t Soy empleado(2)\n");
 		scanf("%i", &b);
 		
 		if(b == 1)
 		{
-			printf("Introduce tu nombre de usuario");
+			usuario usuario1;
+			printf("Introduce tu nick de usuario");
+			scanf(" %[^\n]",usuario1.id);
+			printf("\n Introduce tu nombre:");
+			scanf (" %[^\n]",usuario1.nombre);
+			printf("\n Introduce tus apellidos");
+			scanf(" %[^\n]",usuario1.apellidos);
+			printf ("Introduce tu contraseña (debe ser menor de 20 caracteres): ");
+			scanf ("[^\n]",usuario1.contraseña);
 		}
 		break;
 		default:
