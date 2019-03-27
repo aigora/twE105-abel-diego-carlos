@@ -1,5 +1,13 @@
 #include<stdio.h>
 
+typedef struct {
+    char nombre[20];
+    char apellidos[50];
+    char id[20];
+    int numero;
+    char contrasenna[20];
+}usuario;
+
 void main()
 {
 	int a, b, c, d;
