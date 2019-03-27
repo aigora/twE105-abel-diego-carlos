@@ -1,0 +1,30 @@
+#include<stdio.h>
+
+void main()
+{
+	int a, b, c, d;
+	char id;
+	
+	printf("\n\t > Bienvenido a TRANSFUTURE\n\n");
+	printf("\n\tIniciar sesion(1)\t Registrarse(2): ");
+	scanf("%i", &a);
+	
+	switch(a)
+	{
+		case 1:
+			printf("Usuario:\t");
+			scanf("%s", id);
+		case 2:
+		printf("\n > Identificate:\n\tSoy cliente(1)\t Soy empleado(2)\n");
+		scanf("%i", &b);
+		
+		if(b == 1)
+		{
+			printf("Introduce tu nombre de usuario");
+		}
+		break;
+		default:
+	}
+	
+	return 0;
+}
