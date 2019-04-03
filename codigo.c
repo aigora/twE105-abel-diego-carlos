@@ -14,13 +14,13 @@ void main()
 	char id[20],contrasenna[20];
 	
 	printf("\n\t > Bienvenido a TRANSFUTURE\n\n");
-	printf("\n\tIniciar sesion(1)\t Registrarse(2): ");
+	printf("\n\t Ya tienes cuenta? SI (1) \t NO (2): ");
 	scanf("%i", &a);
 	
 	switch(a)
 	{
 		case 1:
-			printf ("\n ¿Inicias sesión como usuario(1) o como empleado(2)?");
+			printf ("\n Inicias sesion como usuario(1) o como empleado(2)?");
 			scanf (" %i",&c);
 			switch (c)
 			{
