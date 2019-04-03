@@ -36,9 +36,10 @@ void main()
 			printf("\n Introduce tus apellidos");
 			scanf(" %[^\n]",usuario1.apellidos);
 			printf ("Introduce tu contraseña (debe ser menor de 20 caracteres): ");
-			scanf ("[^\n]",usuario1.contraseña);
+			scanf ("[^\n]",usuario1.contrasenna);
 		}
 		break;
+		
 		default:
 	}
 	
