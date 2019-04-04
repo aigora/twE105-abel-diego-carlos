@@ -55,10 +55,11 @@ void main()
                			printf ("Error en la contrasena introducela de nuevo: \n");
                			scanf (" %[^\n]",usuario1.clave);
             		}
+            printf("MAS FUNCIONES PROXIMAMENTE");
             break;
         default:
         	printf("Operacion no valida\n");
-           		printf("MAS FUNCIONES PROXIMAMENTE");
+           		
 			
 	}
 	
