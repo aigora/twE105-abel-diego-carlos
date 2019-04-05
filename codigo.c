@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 
+
 typedef struct {
     char nombre[20];
     char apellidos[50];
