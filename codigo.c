@@ -67,16 +67,16 @@ void main()
 				scanf(" %[^\n]",usuario1.clave);
 
 			b=strlen(usuario1.clave);
-			Sleep(2000);
-			while (b>20 && b<4){
+			printf("%i",b);
+			while (b>20 || b<4){
                	printf ("Error en la contrasena introducela de nuevo: \n");
            			scanf (" %[^\n]",usuario1.clave);
+           			b=strlen(usuario1.clave);
             		}
             printf("MAS FUNCIONES PROXIMAMENTE");
             Sleep(2000);
             break;
         case 3:
-            Sleep(2000);
             break;
         default:
         	printf("Operacion no valida\n");
