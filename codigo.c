@@ -20,7 +20,7 @@ void main()
 	do {
 		printf("\n\t Ya tienes cuenta? SI (1) \t NO (2) \t O deseas salir? (3): ");
 		scanf("%i", &a);
-	} while(a != 1 && a != 2&&a!=3);
+	} while(a != 1 && a != 2 && a != 3);
 
 	switch(a)
 	{
