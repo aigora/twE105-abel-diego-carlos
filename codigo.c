@@ -10,10 +10,14 @@ typedef struct {
     char clave[20];
 }usuario;
 
+int comprobar_usuario(char *p1,char *p2);
+
 void main()
 {
-	int a, b, c, salida;
+	int a, b, c,flag, salida;
 	char id[20],clave[20];
+	char *p1,*p2;
+    char usuario1_id[]= "manoloeldelbombo";
 	do{
 	system("cls");
 	printf("\n\t > Bienvenido a TRANSFUTURE\n\n");
@@ -33,11 +37,16 @@ void main()
 			switch (c)
 			{
             	case 1:
+                	do {
                 	printf("\n Usuario: ");
-                		scanf(" %[^\n]",id);
+                    scanf(" %[^\n]",id);
                 	printf("\n Clave: ");
-                		scanf(" %[^\n]",clave);
-                	printf("\nMAS FUNCIONES PROXIMAMENTE");
+                    scanf(" %[^\n]",clave);
+                	p1=id;
+                	p2=usuario1_id;
+                	flag= comprobar_usuario(p1,p2);
+                	}while (flag==0);
+                	printf ("MAS FUNCIONES PROXIMAMENTE");
                 	Sleep(2000);
                 	break;
 
@@ -85,4 +94,18 @@ void main()
 	} while(a!=3);
 
 	return 0;
+}
+
+int comprobar_usuario(char *p1,char *p2){
+    char a,b;
+    int flag=1;
+    while(*p1 != '\0'){
+        a=*p1;
+        b=*p2;
+        if (a!=b)
+            flag=0;
+        p2++;
+        p1++;
+        }
+    return flag;
 }
