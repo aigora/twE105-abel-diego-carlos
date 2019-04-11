@@ -14,11 +14,12 @@ int comprobar_usuario(char *p1,char *p2);
 
 void main()
 {
-	int a, b, c,flag, salida;
+	int a, b, c,flag,contador, salida;
 	char id[20],clave[20];
 	char *p1,*p2;
     char usuario1_id[]= "manoloeldelbombo";
 	do{
+    contador=0;
 	system("cls");
 	printf("\n\t > Bienvenido a TRANSFUTURE\n\n");
 	do {
@@ -38,6 +39,8 @@ void main()
 			{
             	case 1:
                 	do {
+                    if (contador!=0)
+                        printf("\n Usuario o contraseña incorrectos.\n Trate de iniciar sesion de nuevo\n");
                 	printf("\n Usuario: ");
                     scanf(" %[^\n]",id);
                 	printf("\n Clave: ");
@@ -45,9 +48,12 @@ void main()
                 	p1=id;
                 	p2=usuario1_id;
                 	flag= comprobar_usuario(p1,p2);
-                	}while (flag==0);
-                	printf ("MAS FUNCIONES PROXIMAMENTE");
-                	Sleep(2000);
+                	contador++;
+                	}while (flag==0 && contador<4);
+                	if (contador!=0)
+                        printf("Quizas no esta registrado, trate de registrarse antes de iniciar sesion\n");
+                    printf ("MAS FUNCIONES PROXIMAMENTE");
+                	Sleep(3000);
                 	break;
 
             	case 2:
