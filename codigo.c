@@ -23,7 +23,7 @@ void main()
 	system("cls");
 	printf("\n\t >> Bienvenido a TRANSFUTURE << \n\n");
 	do {
-		printf("\n\t Ya tienes cuenta? \n SI (1) \t NO (2) \t salir? (3) : ");
+		printf("\n\t Ya tienes cuenta? \n\n SI (1) \t NO (2) \t salir? (3) : ");
 		scanf("%i", &a);
 	} while(a != 1 && a != 2 && a != 3);
 
@@ -70,7 +70,7 @@ void main()
 			break;
 
 		case 2:
-			printf("\n > Identificate:\n");
+			printf("\n > Registrate:\n");
 			usuario usuario1;
 			printf("Introduce tu nick de usuario:\t");
 				scanf(" %[^\n]",usuario1.id);
