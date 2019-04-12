@@ -23,7 +23,7 @@ void main()
 	system("cls");
 	printf("\n\t > Bienvenido a TRANSFUTURE\n\n");
 	do {
-		printf("\n\t Ya tienes cuenta? SI (1) \t NO (2) \t O deseas salir? (3): ");
+		printf("\n\t Ya tienes cuenta? \n SI (1) \t NO (2) \t O deseas salir? (3): ");
 		scanf("%i", &a);
 	} while(a != 1 && a != 2 && a != 3);
 
