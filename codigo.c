@@ -9,7 +9,7 @@ typedef struct {
     char id[20];
     char clave[20];
 }usuario;
-
+int nuevousuario(FILE *pf);
 int comprobar_usuario(char *p1,char *p2);
 
 void main()
@@ -17,6 +17,7 @@ void main()
 	int a, b, c,flag,contador, salida;
 	char id[20],clave[20];
 	char *p1,*p2;
+	FILE *puntero;
     char usuario1_id[]= "manoloeldelbombo";
 	do{
     contador=0;
@@ -70,25 +71,8 @@ void main()
 			break;
 
 		case 2:
-			printf("\n > Registrate:\n");
-			usuario usuario1;
-			printf("Introduce tu nick de usuario:\t");
-				scanf(" %[^\n]",usuario1.id);
-			printf("\nIntroduce tu nombre:\t");
-				scanf (" %[^\n]",usuario1.nombre);
-			printf("\nIntroduce tus apellidos:\t");
-				scanf(" %[^\n]",usuario1.apellidos);
-			printf ("\nIntroduce tu contrasena (debe tener entre 4 y 20 letras):\t");
-				scanf(" %[^\n]",usuario1.clave);
-
-			b=strlen(usuario1.clave);
-			printf("%i",b);
-			while (b>20 || b<4){
-               	printf ("Error en la contrasena introducela de nuevo: \n");
-           			scanf (" %[^\n]",usuario1.clave);
-           			b=strlen(usuario1.clave);
-            		}
-            printf("MAS FUNCIONES PROXIMAMENTE");
+			nuevousuario(puntero);
+            printf("AUN EN MANTENIMIENTO");
             Sleep(2000);
             break;
         case 3:
@@ -114,4 +98,34 @@ int comprobar_usuario(char *p1,char *p2){
         p1++;
         }
     return flag;
+}
+int nuevousuario(FILE *pf){
+    char id[20],contrasenna[20];
+    int i,b;
+    char x;
+    pf=fopen("usuarios.txt","a");
+    if (pf==NULL)
+        printf("ERROR AL ABRIR EL ARCHIVO\n");
+    else{
+        printf ("Escribe tu usuario: ");
+        scanf (" %s",id);
+        printf ("\n Introduzca una contraseña: ");
+        scanf (" %s",contrasenna);
+        b=strlen(contrasenna);
+        while (b>20 || b<4){
+            printf ("Error en la contrasena introducela de nuevo: \n");
+            scanf (" %[^\n]",contrasenna);
+            b=strlen(contrasenna);
+        }
+        while (fscanf(pf,"%c",x)!=EOF){
+            if (x<='A'||x>='z')
+                i=x;
+        }
+        fprintf(pf,"%i;%s;%s;\n",++i,id,contrasenna);
+        fclose (pf);
+        system ("cls");
+        printf("ESCRITURA REALIZADA CON EXITO");
+        Sleep(2000);
+        return 0;
+    }
 }
