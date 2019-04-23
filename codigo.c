@@ -72,7 +72,7 @@ void main()
 
 		case 2:
 			nuevousuario(puntero);
-            printf("AUN EN MANTENIMIENTO");
+            printf("\n AUN EN MANTENIMIENTO");
             Sleep(2000);
             break;
         case 3:
