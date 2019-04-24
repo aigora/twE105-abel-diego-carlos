@@ -4,8 +4,6 @@
 #include <stdlib.h>
 
 typedef struct {
-    char nombre[20];
-    char apellidos[50];
     char id[20];
     char clave[20];
 }usuario;
@@ -14,7 +12,7 @@ int comprobar_usuario(char *p1,char *p2);
 
 void main()
 {
-	int a, b, c,flag,contador, salida;
+	int a, b, c, flag, contador, salida; 
 	char id[20],clave[20];
 	char *p1,*p2;
 	FILE *puntero;
@@ -32,7 +30,7 @@ void main()
 	{
 		case 1:
 			do {
-				printf ("\n Iniciar sesion como usuario(1) o como empleado(2)?");
+				printf ("\n\t Iniciar sesion como usuario(1) o como empleado(2)?");
 					scanf (" %i",&c);
 			}while(c != 1 && c != 2);
 
@@ -40,16 +38,16 @@ void main()
 			{
             	case 1:
                 	do {
-                    if (contador!=0)
-                        printf("\n Usuario o contraseña incorrectos.\n Trate de iniciar sesion de nuevo\n");
-                	printf("\n Usuario: ");
-                    scanf(" %[^\n]",id);
-                	printf("\n Clave: ");
-                    scanf(" %[^\n]",clave);
-                	p1=id;
-                	p2=usuario1_id;
-                	flag= comprobar_usuario(p1,p2);
-                	contador++;
+                    	if (contador!=0)
+                    		printf("\n Usuario o contraseña incorrectos.\n Trate de iniciar sesion de nuevo\n");
+                			printf("\n Usuario: ");
+                    			scanf(" %[^\n]",id);
+                			printf("\n Clave: ");
+                    			scanf(" %[^\n]",clave);
+                			p1=id;
+                			p2=usuario1_id;
+                			flag= comprobar_usuario(p1,p2);
+                			contador++;
                 	}while (flag==0 && contador<4);
                 	if (contador!=0)
                         printf("Quizas no esta registrado, trate de registrarse antes de iniciar sesion\n");
