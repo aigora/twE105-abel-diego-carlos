@@ -12,7 +12,7 @@ int comprobar_usuario(char *p1,char *p2);
 
 void main()
 {
-	int a, b, c, flag, contador, salida; 
+	int a, b, c, flag, contador, salida;
 	char id[20],clave[20];
 	char *p1,*p2;
 	FILE *puntero;
@@ -99,30 +99,34 @@ int comprobar_usuario(char *p1,char *p2){
 }
 int nuevousuario(FILE *pf){
     char id[20],contrasenna[20];
-    int i,b;
+    int flag,i,b;
     char x;
     pf=fopen("usuarios.txt","a");
     if (pf==NULL)
         printf("ERROR AL ABRIR EL ARCHIVO\n");
     else{
-        printf ("Escribe tu usuario: ");
-        scanf (" %s",id);
-        printf ("\n Introduzca una contraseña: ");
-        scanf (" %s",contrasenna);
-        b=strlen(contrasenna);
-        while (b>20 || b<4){
-            printf ("Error en la contrasena introducela de nuevo: \n");
-            scanf (" %[^\n]",contrasenna);
+        printf ("Si desea salir pulse el 0, en caso contrario se inscribira un nuevo usuario\n");
+        scanf("%i",&flag);
+        if (flag!=0){
+            printf ("Escribe tu usuario: ");
+            scanf (" %s",id);
+            printf ("\n Introduzca una contraseña: ");
+            scanf (" %s",contrasenna);
             b=strlen(contrasenna);
+            while (b>20 || b<4){
+                printf ("Error en la contrasena introducela de nuevo: \n");
+                scanf (" %[^\n]",contrasenna);
+                b=strlen(contrasenna);
+            }
+            while (fscanf(pf,"%c",x)!=EOF){
+                if (x<='A'||x>='z')
+                    i=x;
+            }
+            fprintf(pf,"%i;%s;%s;\n",++i,id,contrasenna);
+            fclose (pf);
+            system ("cls");
+            printf("ESCRITURA REALIZADA CON EXITO");
         }
-        while (fscanf(pf,"%c",x)!=EOF){
-            if (x<='A'||x>='z')
-                i=x;
-        }
-        fprintf(pf,"%i;%s;%s;\n",++i,id,contrasenna);
-        fclose (pf);
-        system ("cls");
-        printf("ESCRITURA REALIZADA CON EXITO");
         Sleep(2000);
         return 0;
     }
