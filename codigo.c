@@ -6,6 +6,8 @@
 typedef struct {
     char id[20];
     char clave[20];
+    
+    
 }usuario;
 int nuevousuario(FILE *pf);
 int comprobar_usuario(char *p1,char *p2);
