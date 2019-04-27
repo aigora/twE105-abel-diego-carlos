@@ -3,14 +3,21 @@
 #include <windows.h>
 #include <stdlib.h>
 #define P 123456 
-
 // P es el pin para acceder al menu como trabajador de la empresa
+
 typedef struct {
     char id[20];
     char clave[20];
 }usuario;
 int nuevousuario(FILE *pf);
 int comprobar_usuario(char *p1,char *p2);
+
+typedef struct // Nuevas rutas
+{
+	char Origen[20];
+	char Destino[20];
+	float Distancia;
+} Ruta;
 
 void main()
 {
@@ -22,10 +29,11 @@ void main()
 	do{
     contador=0;
 	system("cls");
+	
 	printf("\n\t >> Bienvenido a TRANSFUTURE << \n\n");
 	do {
 		printf("\n  >>  Ya tienes cuenta? \n\n SI (1) \t NO (2) \t Salir (3): ");
-		scanf("%i", &a);
+			scanf("%i", &a);
 	} while(a != 1 && a != 2 && a != 3);
 
 	switch(a)
@@ -69,7 +77,33 @@ void main()
                				Sleep(4000);
                				break;
 						}
-                	printf("\nMAS FUNCIONES PROXIMAMENTE");
+					Ruta r;
+					FILE *file=fopen("c:/Users/whois/Documents/GitHub/twE105-abel-diego-carlos/prueba_distancias.txt","a"); //ruta en nuestro pc del archivo al que queremos anadir texto
+					// Ruta en nuestro pc del archivo al que queremos anadir texto
+					
+					if(file == NULL)
+					{
+						printf("Error al guardar los datos");
+						return 1;
+					}
+					
+					while(1)
+					{
+						printf("\nIntroduce el origen: ");
+							scanf("%s", &r.Origen);
+						printf("Introduce el destino: ");
+							scanf("%s", &r.Destino);
+						printf("Introduce la distancia: ");
+							scanf("%f", &r.Distancia);
+						
+						fprintf(file, "\n%s;%s;%f", r.Origen, r.Destino, r.Distancia);
+						printf("\n  >>  Quieres anadir otra ruta?  Si (S) / No (N)\n");
+						char ch = getch();
+						if(ch == 'N' || ch == 'n')
+							break;
+					}
+					fclose(file);
+					printf("\nRutas añadidas correctamente.\n\n");
                 	Sleep(2000);
                 break;
 
