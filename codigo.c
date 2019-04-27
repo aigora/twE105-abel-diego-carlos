@@ -2,7 +2,9 @@
 #include <string.h>
 #include <windows.h>
 #include <stdlib.h>
+#define P 123456 
 
+// P es el pin para acceder al menu como trabajador de la empresa
 typedef struct {
     char id[20];
     char clave[20];
@@ -12,7 +14,7 @@ int comprobar_usuario(char *p1,char *p2);
 
 void main()
 {
-	int a, b, c, flag, contador, salida;
+	int a, b, c, flag, contador, salida, pin;
 	char id[20],clave[20];
 	char *p1,*p2;
 	FILE *puntero;
@@ -22,7 +24,7 @@ void main()
 	system("cls");
 	printf("\n\t >> Bienvenido a TRANSFUTURE << \n\n");
 	do {
-		printf("\n\t Ya tienes cuenta? \n\n SI (1) \t NO (2) \t salir? (3) : ");
+		printf("\n  >>  Ya tienes cuenta? \n\n SI (1) \t NO (2) \t Salir (3): ");
 		scanf("%i", &a);
 	} while(a != 1 && a != 2 && a != 3);
 
@@ -30,7 +32,8 @@ void main()
 	{
 		case 1:
 			do {
-				printf ("\n\t Iniciar sesion como usuario(1) o como empleado(2)?");
+				system("cls");
+				printf ("\n  >>  Eres CLIENTE (1)  o  EMPLEADO (2)? ");
 					scanf (" %i",&c);
 			}while(c != 1 && c != 2);
 
@@ -56,8 +59,16 @@ void main()
                 	break;
 
             	case 2:
-                	printf ("\n Introduce la contrasena de empleado: ");
-               			scanf(" %[^\n]",clave);
+                	printf ("\n Introduce el pin secreto de la empresa: ");
+               			scanf("%i",&pin);
+               			system("cls");
+               			if(pin != P)
+               			{
+               				printf("El pin es incorrecto\n");
+               				printf("Por motivos de seguridad seras redirigido al menu de inicio\n");
+               				Sleep(4000);
+               				break;
+						}
                 	printf("\nMAS FUNCIONES PROXIMAMENTE");
                 	Sleep(2000);
                 break;
@@ -74,6 +85,8 @@ void main()
             Sleep(2000);
             break;
         case 3:
+        	system("cls");
+        	printf("\n  >>  Hasta la proxima.");
             break;
         default:
         	printf("Operacion no valida\n");
