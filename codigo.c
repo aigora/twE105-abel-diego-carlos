@@ -21,13 +21,12 @@ typedef struct // Nuevas rutas
 
 void main()
 {
-	int a, b, c, flag, contador, salida, pin;
+	int a, b, c, flag, contador = 0, salida, pin, aux = 0;
 	char id[20],clave[20];
 	char *p1,*p2;
 	FILE *puntero;
     char usuario1_id[]= "manoloeldelbombo";
 	do{
-    contador=0;
 	system("cls");
 	
 	printf("\n\t >> Bienvenido a TRANSFUTURE << \n\n");
