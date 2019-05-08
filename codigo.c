@@ -2,7 +2,7 @@
 #include <string.h>
 #include <windows.h>
 #include <stdlib.h>
-#define P 123456 
+#define P 123456
 // P es el pin para acceder al menu como trabajador de la empresa
 
 typedef struct {
@@ -11,6 +11,7 @@ typedef struct {
 }usuario;
 int nuevousuario(FILE *pf);
 int comprobar_usuario(char *p1,char *p2);
+float comprobar_ruta(FILE *pf);
 
 typedef struct // Nuevas rutas
 {
@@ -22,13 +23,14 @@ typedef struct // Nuevas rutas
 void main()
 {
 	int a, b, c, flag, contador = 0, salida, pin, aux = 0;
+	float distancia;
 	char id[20],clave[20];
 	char *p1,*p2;
 	FILE *puntero;
     char usuario1_id[]= "manoloeldelbombo";
 	do{
 	system("cls");
-	
+
 	printf("\n\t >> Bienvenido a TRANSFUTURE << \n\n");
 	do {
 		printf("\n  >>  Ya tienes cuenta? \n\n SI (1) \t NO (2) \t Salir (3): ");
@@ -61,7 +63,7 @@ void main()
                 	}while (flag==0 && contador<4);
                 	if (contador!=0)
                         printf("Quizas no esta registrado, trate de registrarse antes de iniciar sesion\n");
-                    printf ("MAS FUNCIONES PROXIMAMENTE");
+                    distancia=comprobar_ruta(puntero);
                 	Sleep(3000);
                 	break;
 
@@ -77,15 +79,15 @@ void main()
                				break;
 						}
 					Ruta r;
-					FILE *file=fopen("c:/Users/whois/Documents/GitHub/twE105-abel-diego-carlos/prueba_distancias.txt","a"); //ruta en nuestro pc del archivo al que queremos anadir texto
+					FILE *file=fopen("Distancias.txt","a"); //ruta en nuestro pc del archivo al que queremos anadir texto
 					// Ruta en nuestro pc del archivo al que queremos anadir texto
-					
+
 					if(file == NULL)
 					{
 						printf("Error al guardar los datos");
 						return 1;
 					}
-					
+
 					while(1)
 					{
 						printf("\nIntroduce el origen: ");
@@ -94,7 +96,7 @@ void main()
 							scanf("%s", &r.Destino);
 						printf("Introduce la distancia: ");
 							scanf("%f", &r.Distancia);
-						
+
 						fprintf(file, "\n%s;%s;%f", r.Origen, r.Destino, r.Distancia);
 						printf("\n  >>  Quieres anadir otra ruta?  Si (S) / No (N)\n");
 						char ch = getch();
@@ -176,4 +178,47 @@ int nuevousuario(FILE *pf){
         Sleep(2000);
         return 0;
     }
+}
+float comprobar_ruta(FILE *pf){
+    int flag=0,flag2=0;
+    Ruta ruta1;
+    char Origen[20],Destino[20],*p1,*p2;
+    pf=fopen("Distancias.txt","r");
+    if (pf==NULL)
+        printf("ERROR AL ABRIR EL ARCHIVO");
+    else{
+        printf("Introduzca el origen de su viaje:");
+        scanf("%[^\n]",Origen);
+        printf("\nIntroduzca el destino de su viaje:");
+        fflush(stdin);
+        scanf("%[^\n]",Destino);
+        //EN ESTE BUCLE WHILE SE VA BUSCANDO QUE Ruta1.Origen COINCIDA CON EL ORIGEN INTRODUCIDO POR EL USUARIO
+        while (feof(pf)==0&&(flag!=1||flag2!=1)){
+            fscanf(pf,"%[^;];%[^;];%f\n",ruta1.Origen,ruta1.Destino,&ruta1.Distancia);
+            //SE USAN LOS PUNTEROS HACIA LOS DOS STRINGS ANTES MENCIONADOS PARA QUE LA FUNCION COMPROBAR_USUARIO COMPRUEBEN
+            // SI SON EL MISMO STRING O NO
+            p1=Origen;
+            p2=ruta1.Origen;
+            flag=comprobar_usuario(p1,p2);
+            //SI FLAG VALE UNO, LOS STRING SON IGUALES; POR TANTO COMPROBAMOS SI EL DESTINO TAMBIEN COINCIDE
+            if (flag==1){
+                system("cls");
+                printf("\nCOMPROBANDO DESTINO...");
+                p1=Destino;
+                p2=ruta1.Destino;
+                flag2=comprobar_usuario(p1,p2);
+            }
+        }
+        fclose(pf);
+        if (flag!=1||flag2!=1){
+            printf("LA RUTA NO ESTA EN NUESTRA BASE DE DATOS\n");
+            Sleep(2000);
+            return -1;
+        }
+        else {
+         return ruta1.Distancia;
+        }
+
+    }
+
 }
