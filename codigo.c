@@ -12,6 +12,7 @@ typedef struct {
 int nuevousuario(FILE *pf);
 int comprobar_usuario(char *p1,char *p2);
 float comprobar_ruta(FILE *pf);
+int iniciar_sesion(FILE *pf);
 
 typedef struct // Nuevas rutas
 {
@@ -49,21 +50,12 @@ void main()
 			switch (c)
 			{
             	case 1:
-                	do {
-                    	if (contador!=0)
-                    		printf("\n Usuario o contraseña incorrectos.\n Trate de iniciar sesion de nuevo\n");
-                			printf("\n Usuario: ");
-                    			scanf(" %[^\n]",id);
-                			printf("\n Clave: ");
-                    			scanf(" %[^\n]",clave);
-                			p1=id;
-                			p2=usuario1_id;
-                			flag= comprobar_usuario(p1,p2);
-                			contador++;
-                	}while (flag==0 && contador<4);
-                	if (contador!=0)
-                        printf("Quizas no esta registrado, trate de registrarse antes de iniciar sesion\n");
+                	flag=iniciar_sesion(puntero);
+                    if (flag==1){
                     distancia=comprobar_ruta(puntero);
+                    }else if(flag==-1){
+                        printf("No esta registrado ese usuario; Regístrese antes de iniciar sesion.\n");
+                    }
                 	Sleep(3000);
                 	break;
 
@@ -217,4 +209,47 @@ float comprobar_ruta(FILE *pf){
 
     }
 
+}
+int iniciar_sesion(FILE *pf){
+    usuario user1;
+    int flag=0,flag2=0,contador=0;
+    char id[20],clave[20],*p1,*p2;
+    pf=fopen("usuarios.txt","r");
+    if(pf==NULL)
+        printf("ERROR AL ABRIR EL ARCHIVO");
+    else{
+        do{
+        if (contador!=0)
+            printf("\n Usuario o contraseña incorrectos.\n Trate de iniciar sesion de nuevo\n");
+        printf("\n Usuario: ");
+        scanf(" %[^\n]",id);
+        fflush(stdin);
+        printf("\n Clave: ");
+        scanf("%[^\n]",clave);
+        fflush(stdin);
+        contador++;
+        while (feof(pf)==0&&(flag!=1||flag2!=1)){
+            fscanf(pf,"%[^;];%[^;]\n)",user1.id,user1.clave);
+            p1=id;
+            p2=user1.id;
+            flag=comprobar_usuario(p1,p2);
+            if (flag==1){
+                p1=clave;
+                p2=user1.clave;
+                flag2=comprobar_usuario(p1,p2);
+            }
+
+        }
+        }while (flag==0 && contador<4);
+        fclose(pf);
+        if(flag==1&&flag2==1){
+            return 1;
+        }else if(flag!=1){
+            printf("Quizas no esta registrado, trate de registrarse antes de iniciar sesion\n");
+            return -1;
+        }else if(flag2!=1){
+            printf("La contraseña es incorrecta, pruebe de nuevo o registrese antes de iniciar sesion\n");
+            return -1;
+        }
+}
 }
