@@ -166,11 +166,7 @@ int nuevousuario(FILE *pf){
                 scanf (" %[^\n]",contrasenna);
                 b=strlen(contrasenna);
             }
-            while (fscanf(pf,"%c",x)!=EOF){
-                if (x<='A'||x>='z')
-                    i=x;
-            }
-            fprintf(pf,"%i;%s;%s;\n",++i,id,contrasenna);
+            fprintf(pf,"%s;%s;\n",id,contrasenna);
             fclose (pf);
             system ("cls");
             printf("ESCRITURA REALIZADA CON EXITO");
