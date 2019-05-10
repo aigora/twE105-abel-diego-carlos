@@ -84,10 +84,10 @@ void main()
                         if(file == NULL)
                         {
                             printf("Error al abrir el archivo");
-                            return 1;
+                            return 0;
                         }else{
                             do{
-                                printf("Que desea hacer? 1.Introducir nueva ruta\t 2.Modificar precios 3.Salir");
+                                printf("Que desea hacer? 1.Introducir nueva ruta\t 2.Modificar precios\t 3.Salir");
                             scanf ("%i",&b);
                             fflush(stdin);
                             switch (b)
@@ -99,6 +99,7 @@ void main()
                                 break;
                                 case 3:
                                 flag=1;
+                                printf("\nHasta la proxima");
                                 break;
                             }
                             }while(flag!=1);
@@ -108,13 +109,9 @@ void main()
                         Sleep(3000);
                         break;
                 	}
-
-
-                default:
-                	printf("Operacion no disponible\n");
                 	Sleep(2000);
 			}
-			break;
+                    break;
 
 		case 2:
 			nuevousuario(puntero);
