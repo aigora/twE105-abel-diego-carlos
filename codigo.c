@@ -9,17 +9,19 @@ typedef struct {
     char id[20];
     char clave[20];
 }usuario;
-int nuevousuario(FILE *pf);
-int comprobar_usuario(char *p1,char *p2);
-float comprobar_ruta(FILE *pf);
-int iniciar_sesion(FILE *pf);
-
 typedef struct // Nuevas rutas
 {
 	char Origen[20];
 	char Destino[20];
 	float Distancia;
 } Ruta;
+int nuevousuario(FILE *pf);
+int comprobar_usuario(char *p1,char *p2);
+float comprobar_ruta(FILE *pf);
+int iniciar_sesion(FILE *pf);
+int nueva_ruta(FILE *pf,Ruta r);
+
+
 
 void main()
 {
@@ -28,6 +30,7 @@ void main()
 	char id[20],clave[20];
 	char *p1,*p2;
 	FILE *puntero;
+	Ruta r;
     char usuario1_id[]= "manoloeldelbombo";
 	do{
 	system("cls");
@@ -50,6 +53,7 @@ void main()
 			switch (c)
 			{
             	case 1:
+            	    system("cls");
                 	flag=iniciar_sesion(puntero);
                     if (flag==1){
                     distancia=comprobar_ruta(puntero);
@@ -60,45 +64,51 @@ void main()
                 	break;
 
             	case 2:
+                	do{
                 	printf ("\n Introduce el pin secreto de la empresa: ");
-               			scanf("%i",&pin);
-               			system("cls");
-               			if(pin != P)
+                    scanf("%i",&pin);
+                    system("cls");
+                    if(pin != P)
                			{
-               				printf("El pin es incorrecto\n");
-               				printf("Por motivos de seguridad seras redirigido al menu de inicio\n");
+               				printf("El pin es incorrecto\tRecuerda que solo tienes tres intentos\n");
+               				contador++;
                				Sleep(4000);
-               				break;
 						}
-					Ruta r;
-					FILE *file=fopen("Distancias.txt","a"); //ruta en nuestro pc del archivo al que queremos anadir texto
-					// Ruta en nuestro pc del archivo al que queremos anadir texto
+                    if(pin ==P)
+                        contador+=4;
+                	}while (contador<4);
+                	if (contador>=4){
+                        FILE *file=fopen("Distancias.txt","a"); //ruta en nuestro pc del archivo al que queremos anadir texto
+                        // Ruta en nuestro pc del archivo al que queremos anadir texto
 
-					if(file == NULL)
-					{
-						printf("Error al guardar los datos");
-						return 1;
-					}
+                        if(file == NULL)
+                        {
+                            printf("Error al abrir el archivo");
+                            return 1;
+                        }else{
+                            do{
+                                printf("Que desea hacer? 1.Introducir nueva ruta\t 2.Modificar precios 3.Salir");
+                            scanf ("%i",&b);
+                            fflush(stdin);
+                            switch (b)
+                            {
+                                case 1:
+                                nueva_ruta(file,r);
+                                break;
+                                case 2:
+                                break;
+                                case 3:
+                                flag=1;
+                                break;
+                            }
+                            }while(flag!=1);
+                        }
+                	}else if(contador==3){
+                        printf("Por motivos de seguridad seras redirigido al menu de inicio\n");
+                        Sleep(3000);
+                        break;
+                	}
 
-					while(1)
-					{
-						printf("\nIntroduce el origen: ");
-							scanf("%s", &r.Origen);
-						printf("Introduce el destino: ");
-							scanf("%s", &r.Destino);
-						printf("Introduce la distancia: ");
-							scanf("%f", &r.Distancia);
-
-						fprintf(file, "\n%s;%s;%f", r.Origen, r.Destino, r.Distancia);
-						printf("\n  >>  Quieres anadir otra ruta?  Si (S) / No (N)\n");
-						char ch = getch();
-						if(ch == 'N' || ch == 'n')
-							break;
-					}
-					fclose(file);
-					printf("\nRutas añadidas correctamente.\n\n");
-                	Sleep(2000);
-                break;
 
                 default:
                 	printf("Operacion no disponible\n");
@@ -252,4 +262,16 @@ int iniciar_sesion(FILE *pf){
             return -1;
         }
 }
+}
+int nueva_ruta(FILE *pf,Ruta r){
+    printf("\nIntroduce el origen: ");
+    scanf("%s", &r.Origen);
+    printf("Introduce el destino: ");
+    scanf("%s", &r.Destino);
+    printf("Introduce la distancia: ");
+    scanf("%f", &r.Distancia);
+    fprintf(pf, "\n%s;%s;%f", r.Origen, r.Destino, r.Distancia);
+    fclose(pf);
+    printf("\nRutas añadidas correctamente.\n\n");
+    Sleep(2000);
 }
