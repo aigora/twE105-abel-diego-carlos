@@ -20,6 +20,30 @@ Ahora que ya conocemos todas las funciones del programa, veamos paso por paso co
 
        Esta es la pantalla de inicio del programa ('home'), en la cual podemos elegir entre:
         * Iniciar sesión ( pulsando la tecla 1, accederemos a la opción que nos permite introducir nuestro usuario y contraseña, ya registrados anteriormente, e iniciar sesion)
-        * 
+        * Registrarnos ( pulsando la tecla 2, accederemos a la opción la cual nos permite registrarnos con un nombre de usuario y una contraseña )
+        * Salir ( pulsando la tecla 3, salimos del programa)
+   2. REGISTRO
 
+       Supongamos que aún no estamos registrados y en el 'home' hemos pulsado la techa 2 para acceder al menú de registro:
+
+       ![](https://github.com/aigora/twE105-abel-diego-carlos/blob/master/images/REGISTRO.PNG)
+
+       Nos serán solicitados un nombre de usuario (ej:carlos) y una contraseña(ej:123456) que debemos introducir, y presionar a tecla 'enter', para que estos datos queden almacenados, y posteriormente podamos iniciar sesión con ellos.
+   3. INICIO DE SESIÓN
+
+       Una vez que nos hallamos registrados, en el 'home' deberemos pulsar la tecla 1, para iniciar sesión  en tal caso:
+
+        ![](https://github.com/aigora/twE105-abel-diego-carlos/blob/master/images/INICIO%20DE%20SESION%201.PNG)
+
+         Se nos pide que distingamos si nos vamos a identificar como usuarios o como empleados:
+         - Como empleados, tecla (2): 
+
+             ![](https://github.com/aigora/twE105-abel-diego-carlos/blob/master/images/INICIO%20DE%20SISION%20EMPLEADO.PNG)
+
+              Tendremos que introducir directamente la 'clave secreta de la empresa' la cual, slo conocen los empleados ( 1234) y con ello accederemos a las opciones que se brindan al empleado.
+         - Como usuarios, tecla (1):
+
+              ![](https://github.com/aigora/twE105-abel-diego-carlos/blob/master/images/INICIO%20DE%20SESION%20USUARIO.PNG)
+
+              Tendremos que introducir el usuario y contraseña anteriormente registrados para acceder a las opciones que se le brindan al usuario´.
 
