@@ -21,6 +21,7 @@ float comprobar_ruta(FILE *pf);
 int iniciar_sesion(FILE *pf);
 int nueva_ruta(FILE *pf,Ruta r);
 float calcularprecio (FILE *pf,float distancia);
+void modificar_precios(FILE *pf);
 
 
 void main()
@@ -89,6 +90,7 @@ void main()
                             return 0;
                         }else{
                             do{
+                                system("cls");
                                 printf("Que desea hacer? 1.Introducir nueva ruta\t 2.Modificar precios\t 3.Salir");
                             scanf ("%i",&b);
                             fflush(stdin);
@@ -98,6 +100,7 @@ void main()
                                 nueva_ruta(file,r);
                                 break;
                                 case 2:
+                                    modificar_precios(puntero);
                                 break;
                                 case 3:
                                 flag=1;
@@ -300,5 +303,25 @@ int nueva_ruta(FILE *pf,Ruta r){
         Sleep(5000);
         return precio;
 }
-
-
+void modificar_precios(FILE *pf){
+    float km,premium,noche;
+    pf=fopen("precios.txt","w");
+    if(pf==NULL)
+        printf("ERROR AL ABRIR EL ARCHIVO");
+    else{
+        system("cls");
+        printf("\nIntroduzca el nuevo precio por kilometraje:");
+        scanf("%f",&km);
+        fflush(stdin);
+        printf("\n Introduzca el nuevo precio por el servicio nocturno:");
+        scanf("%f",&noche);
+        fflush(stdin);
+        printf("\n Introduzca el nuevo precio por el servicio premium:");
+        scanf("%f",&premium);
+        fflush(stdin);
+        fprintf(pf,"%f;%f;%f;",km,noche,premium);
+        fclose(pf);
+        system("cls");
+        printf("ACTUALIZACION DE LOS PRECIOS REALIZADA CON EXITO");
+    }
+}
