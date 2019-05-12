@@ -238,7 +238,7 @@ int iniciar_sesion(FILE *pf){
         fflush(stdin);
         contador++;
         while (feof(pf)==0&&(flag!=1||flag2!=1)){
-            fscanf(pf,"%[^;];%[^;]\n)",user1.id,user1.clave);
+            fscanf(pf,"%[^;];%[^;];\n)",user1.id,user1.clave);
             p1=id;
             p2=user1.id;
             flag=comprobar_usuario(p1,p2);
@@ -249,7 +249,7 @@ int iniciar_sesion(FILE *pf){
             }
 
         }
-        }while (flag==0 && contador<4);
+        }while (flag==0 && flag2==0 && contador<4);
         fclose(pf);
         if(flag==1&&flag2==1){
             return 1;
