@@ -20,18 +20,17 @@ int comprobar_usuario(char *p1,char *p2);
 float comprobar_ruta(FILE *pf);
 int iniciar_sesion(FILE *pf);
 int nueva_ruta(FILE *pf,Ruta r);
-
+float calcularprecio (FILE *pf,float distancia);
 
 
 void main()
 {
 	int a, b, c, flag, contador = 0, salida, pin, aux = 0;
-	float distancia;
+	float distancia,precio;
 	char id[20],clave[20];
 	char *p1,*p2;
 	FILE *puntero;
 	Ruta r;
-    char usuario1_id[]= "manoloeldelbombo";
 	do{
 	system("cls");
 
@@ -56,7 +55,10 @@ void main()
             	    system("cls");
                 	flag=iniciar_sesion(puntero);
                     if (flag==1){
-                    distancia=comprobar_ruta(puntero);
+                        distancia=comprobar_ruta(puntero);
+                        if (distancia==-1)
+                            break;
+                        precio=calcularprecio(puntero,distancia);
                     }else if(flag==-1){
                         printf("No esta registrado ese usuario; Regístrese antes de iniciar sesion.\n");
                     }
@@ -272,3 +274,31 @@ int nueva_ruta(FILE *pf,Ruta r){
     printf("\nRutas añadidas correctamente.\n\n");
     Sleep(2000);
 }
+    float calcularprecio (FILE *pf,float distancia){
+        int a;
+        float precio,premium,km,noche;
+        pf=fopen("precios.txt","r");
+        fscanf(pf,"%f;%f;%f;",&km,&noche,&premium);
+        printf("%f;%f;%f",km,noche,premium);
+        fclose(pf);
+        do{
+            fflush(stdin);
+            printf("Va a realizar el viaje de noche?\n 1.SI\t2.NO:");
+            scanf("%i",&a);
+            if (a==1)
+                precio=distancia*noche;
+        }while(a!=1&&a!=2);
+        do{
+            printf("Desea tener el servicio premium (cargador,conexion a Internet,etc) en su viaje:\n 1.SI\t 2.NO:");
+            scanf("%i",&a);
+            fflush(stdin);
+            if (a==1)
+                precio+=distancia*premium;
+        }while(a!=1&&a!=2);
+        precio+=distancia*km;
+        printf("El precio final de tu viaje seria de %f",precio);
+        Sleep(5000);
+        return precio;
+}
+
+
