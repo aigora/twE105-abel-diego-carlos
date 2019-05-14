@@ -157,7 +157,7 @@ int nuevousuario(FILE *pf){
     if (pf==NULL)
         printf("ERROR AL ABRIR EL ARCHIVO\n");
     else{
-        printf ("Si desea salir pulse el 0, en caso contrario se inscribira un nuevo usuario\n");
+        printf ("Si desea salir pulse 0, para continuar pulse 1 \n");
         scanf("%i",&flag);
         if (flag!=0){
             printf ("Escribe tu usuario: ");
