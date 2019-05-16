@@ -2,19 +2,9 @@
 #include <string.h>
 #include <windows.h>
 #include <stdlib.h>
+#include "libreria.h"
 #define P 123456
 // P es el pin para acceder al menu como trabajador de la empresa
-
-typedef struct {
-    char id[20];
-    char clave[20];
-}usuario;
-typedef struct // Nuevas rutas
-{
-	char Origen[20];
-	char Destino[20];
-	float Distancia;
-} Ruta;
 
 
 
@@ -50,6 +40,7 @@ void main()
             	    system("cls");
                 	flag=iniciar_sesion(puntero);
                     if (flag==1){
+                        printf("Bienvenido!\n");
                         distancia=comprobar_ruta(puntero);
                         if (distancia==-1)
                             break;
