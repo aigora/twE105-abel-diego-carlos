@@ -1,4 +1,5 @@
 #include "libreria.h"
+#include <string.h> 
 
 int comprobar_usuario(char *p1,char *p2){
     char a,b;
