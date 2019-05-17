@@ -6,8 +6,6 @@
 #define P 123456
 // P es el pin para acceder al menu como trabajador de la empresa
 
-
-
 int main()
 {
 	int a, b, c, flag, contador = 0, salida, pin, aux = 0;
@@ -72,7 +70,7 @@ int main()
                         if(file == NULL)
                         {
                             printf("Error al abrir el archivo");
-                            return 0;
+                            //return 0;
                         }else{
                             do{
                                 system("cls");
@@ -118,7 +116,7 @@ int main()
 	}
 	} while(a!=3);
 
-	return 0;
+	//return 0;
 }
 
 
