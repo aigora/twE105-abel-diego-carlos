@@ -103,7 +103,7 @@ int main()
 
 		case 2:
 			nuevousuario(puntero);
-            printf("\n AUN EN MANTENIMIENTO");
+            printf("\nSERA REDIRIGIDO AL HOME");
             Sleep(2000);
             break;
         case 3:

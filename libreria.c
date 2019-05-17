@@ -24,23 +24,21 @@ int nuevousuario(FILE *pf){
         if (pf==NULL)
             printf("ERROR AL ABRIR EL ARCHIVO\n");
         else{
-            printf ("Si desea salir pulse 0, para continuar pulse 1 \n");
+            printf (" \nSi desea salir pulse 0, para continuar pulse 1 \n");
             scanf("%i",&flag);
             fflush(stdin);
-            if (flag!=0){
+            if (flag==1){
                 printf ("Escribe tu usuario: ");
                 scanf ("%s",id);
                 do{
                     fscanf(pf,"%[^;];%[^;];\n",id2,s);
                     p1=id;
                     p2=id2;
-                    printf("%s;%s",id,id2);
-                    Sleep(1000);
                     flag2=comprobar_usuario(p1,p2);
                 }while (feof(pf)==0&&flag2!=1);
                 fclose(pf);
                 if (flag2==0){
-                    printf ("\n Introduzca una contraseña: ");
+                    printf ("\nIntroduzca una contrasena: ");
                     fflush(stdin);
                     scanf ("%s",contrasenna);
                     b=strlen(contrasenna);
@@ -58,7 +56,7 @@ int nuevousuario(FILE *pf){
                 }
                 else {
                     system("cls");
-                    printf("El usuario ya esta registrado, pruebe con un usuario distinto");
+                    printf("El usuario ya esta registrado, pruebe con un usuario distinto\n");
                 }
         }
         }
@@ -119,7 +117,7 @@ int iniciar_sesion(FILE *pf){
     else{
         do{
         if (contador!=0)
-            printf("\n Usuario o contraseña incorrectos.\n Trate de iniciar sesion de nuevo\n");
+            printf("\n Usuario o contrasegna incorrectos.\n Trate de iniciar sesion de nuevo\n");
         printf("\n Usuario: ");
         scanf(" %[^\n]",id);
         fflush(stdin);
