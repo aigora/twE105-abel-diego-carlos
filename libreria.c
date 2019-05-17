@@ -169,24 +169,23 @@ int nueva_ruta(FILE *pf,Ruta r){
         float precio,premium,km,noche;
         pf=fopen("precios.txt","r");
         fscanf(pf,"%f;%f;%f;",&km,&noche,&premium);
-        printf("%f;%f;%f",km,noche,premium);
         fclose(pf);
         do{
             fflush(stdin);
-            printf("Va a realizar el viaje de noche?\n 1.SI\t2.NO:");
+            printf("\nVa a realizar el viaje de noche?\n 1.SI\t2.NO:");
             scanf("%i",&a);
             if (a==1)
                 precio=distancia*noche;
         }while(a!=1&&a!=2);
         do{
-            printf("Desea tener el servicio premium (cargador,conexion a Internet,etc) en su viaje:\n 1.SI\t 2.NO:");
+            printf("\nDesea tener el servicio premium (cargador,conexion a Internet,etc) en su viaje:\n 1.SI\t 2.NO:");
             scanf("%i",&a);
             fflush(stdin);
             if (a==1)
                 precio+=distancia*premium;
         }while(a!=1&&a!=2);
         precio+=distancia*km;
-        printf("El precio final de tu viaje seria de %f",precio);
+        printf("\nEl precio final de tu viaje seria de %f",precio);
         Sleep(5000);
         return precio;
 }
