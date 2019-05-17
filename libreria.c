@@ -1,6 +1,7 @@
 #include "libreria.h"
 #include <windows.h>
 #include <string.h>
+
 int comprobar_usuario(char *p1,char *p2){
     char a,b;
     int flag=1;

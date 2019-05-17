@@ -38,7 +38,7 @@ int main()
             	    system("cls");
                 	flag=iniciar_sesion(puntero);
                     if (flag==1){
-                        printf("Bienvenido!\n");
+                        printf("\nBienvenido!\n\n");
                         distancia=comprobar_ruta(puntero);
                         if (distancia==-1)
                             break;
