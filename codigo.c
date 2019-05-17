@@ -103,8 +103,8 @@ int main()
 
 		case 2:
 			nuevousuario(puntero);
-            printf("\n sera redirigido al 'home'");
-            Sleep(2500);
+            printf("\n AUN EN MANTENIMIENTO");
+            Sleep(2000);
             break;
         case 3:
         	system("cls");
