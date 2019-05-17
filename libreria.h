@@ -1,4 +1,5 @@
-
+#include <stdio.h>
+#include <stdlib.h>
 typedef struct // Nuevas rutas
 {
 	char Origen[20];

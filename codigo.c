@@ -8,7 +8,7 @@
 
 
 
-void main()
+int main()
 {
 	int a, b, c, flag, contador = 0, salida, pin, aux = 0;
 	float distancia,precio;
