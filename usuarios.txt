@@ -1,1 +1,3 @@
 carlos;martinez;
+CARLOS;martinez;
+CHIKILINOVK;chikilino;

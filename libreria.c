@@ -30,6 +30,7 @@ int nuevousuario(FILE *pf){
             if (flag==1){
                 printf ("Escribe tu usuario: ");
                 scanf ("%s",id);
+                _strupr(id);
                 do{
                     fscanf(pf,"%[^;];%[^;];\n",id2,s);
                     p1=id;
@@ -74,9 +75,11 @@ float comprobar_ruta(FILE *pf){
     else{
         printf("Introduzca el origen de su viaje:");
         scanf("%[^\n]",Origen);
+        _strupr(Origen);
         printf("\nIntroduzca el destino de su viaje:");
         fflush(stdin);
         scanf("%[^\n]",Destino);
+        _strupr(Destino);
         //EN ESTE BUCLE WHILE SE VA BUSCANDO QUE Ruta1.Origen COINCIDA CON EL ORIGEN INTRODUCIDO POR EL USUARIO
         while (feof(pf)==0&&(flag!=1||flag2!=1)){
             fscanf(pf,"%[^;];%[^;];%f\n",ruta1.Origen,ruta1.Destino,&ruta1.Distancia);
@@ -120,6 +123,7 @@ int iniciar_sesion(FILE *pf){
             printf("\n Usuario o contrasegna incorrectos.\n Trate de iniciar sesion de nuevo\n");
         printf("\n Usuario: ");
         scanf(" %[^\n]",id);
+        _strupr(id);
         fflush(stdin);
         printf("\n Clave: ");
         scanf("%[^\n]",clave);
@@ -153,8 +157,10 @@ int iniciar_sesion(FILE *pf){
 int nueva_ruta(FILE *pf,Ruta r){
     printf("\nIntroduce el origen: ");
     scanf("%s", &r.Origen);
+    _strupr (r.Origen);
     printf("Introduce el destino: ");
     scanf("%s", &r.Destino);
+    _strupr (r.Destino);
     printf("Introduce la distancia: ");
     scanf("%f", &r.Distancia);
     fprintf(pf, "\n%s;%s;%f", r.Origen, r.Destino, r.Distancia);
@@ -183,7 +189,7 @@ int nueva_ruta(FILE *pf,Ruta r){
                 precio+=distancia*premium;
         }while(a!=1&&a!=2);
         precio+=distancia*km;
-        printf("\nEl precio final de tu viaje seria de %f",precio);
+        printf("\nEl precio final de tu viaje seria de %f ",precio);
         Sleep(5000);
         return precio;
 }
