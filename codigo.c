@@ -59,7 +59,7 @@ int main()
 					{
                			{    
                				printf("El pin es incorrecto\tRecuerda que solo tienes tres intentos \t\t ");
-               				printf(" intento numero %d",contador+1);
+               				printf(" intento numero: %d",contador+1);
                				printf ("\n Introduce el pin secreto de la empresa: ");
                    			scanf("%i",&pin);
                    			system("cls");
