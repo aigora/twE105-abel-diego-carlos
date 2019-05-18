@@ -1,4 +1,4 @@
-# TRANSFUTURE
+
 
 **1. BREVE EXPLICACIÓN** 
 
@@ -121,4 +121,5 @@ Se nos pedirá introducir las nuevas tasas; teniendo en cuenta que:
 Es decir:
 
 PRECIO FINAL: precio base + suplemento por nocturnidad + suplemento por el servicio premium
+
 
