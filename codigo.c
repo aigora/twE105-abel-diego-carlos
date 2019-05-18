@@ -50,21 +50,25 @@ int main()
                 	break;
 
             	case 2:
-                	do
+            		printf ("\n Introduce el pin secreto de la empresa: ");
+                   	scanf("%i",&pin);
+                   	system("cls");
+            	if (pin!=P)
+				{
+					do
 					{
-                	printf ("\n Introduce el pin secreto de la empresa: ");
-                    scanf("%i",&pin);
-                    system("cls");
-                    if(pin != P)
-               			{
+               			{    
                				printf("El pin es incorrecto\tRecuerda que solo tienes tres intentos \t\t ");
-               				printf("intento numero: %d",contador);
+               				printf(" intento numero %d",contador+1);
+               				printf ("\n Introduce el pin secreto de la empresa: ");
+                   			scanf("%i",&pin);
+                   			system("cls");
                				contador++;
                				Sleep(2000);
 						}
                 	}
-					while (contador<4);
-					
+                	while ((pin!=P)&&(contador<3));
+                }
                 	if (pin == P)
 					{
                         FILE *file=fopen("Distancias.txt","a"); //ruta en nuestro pc del archivo al que queremos anadir texto
@@ -101,15 +105,17 @@ int main()
                         }
                 	}
                 	
-					else if(contador==4)
+					else if(contador==3)
 					{
                         printf("\n\tPor motivos de seguridad seras redirigido al menu de inicio\n");
                         Sleep(3000);
+                        contador=0;
                         break;
                 	}
                 	Sleep(2000);
-			}
+			}		
                     break;
+            
 
 		case 2:
 			nuevousuario(puntero);
