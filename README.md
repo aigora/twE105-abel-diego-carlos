@@ -1,6 +1,7 @@
 # GESTION DE EMPRESA DE TRANSPORTE- TRANSFUTURE
 
-Gestionar una base de datos de una empresa de transporte para facilitar su uso y mejorar los dividendos.
+   ![](https://github.com/aigora/twE105-abel-diego-carlos/blob/master/images/logo.png)
+
 ## Integrantes del equipo
 
 Diego Herrera Sánchez -(dhsanchez)
