@@ -8,7 +8,7 @@
 
 int main()
 {
-	int a, b, c, flag, contador = 0, salida, pin, aux = 0;
+	int a, b, c, flag, contador = 1, salida, pin, aux = 0;
 	float distancia,precio;
 	char id[20],clave[20];
 	char *p1,*p2;
@@ -50,20 +50,23 @@ int main()
                 	break;
 
             	case 2:
-                	do{
+                	do
+					{
                 	printf ("\n Introduce el pin secreto de la empresa: ");
                     scanf("%i",&pin);
                     system("cls");
                     if(pin != P)
                			{
-               				printf("El pin es incorrecto\tRecuerda que solo tienes tres intentos\n");
+               				printf("El pin es incorrecto\tRecuerda que solo tienes tres intentos \t\t ");
+               				printf("intento numero: %d",contador);
                				contador++;
                				Sleep(4000);
 						}
-                    if(pin ==P)
-                        contador+=4;
-                	}while (contador<4);
-                	if (contador>=4){
+                	}
+					while (contador<4);
+					
+                	if (pin == P)
+					{
                         FILE *file=fopen("Distancias.txt","a"); //ruta en nuestro pc del archivo al que queremos anadir texto
                         // Ruta en nuestro pc del archivo al que queremos anadir texto
 
@@ -71,8 +74,11 @@ int main()
                         {
                             printf("Error al abrir el archivo");
                             //return 0;
-                        }else{
-                            do{
+                        }
+						else
+						{
+                            do
+							{
                                 system("cls");
                                 printf("Que desea hacer? 1.Introducir nueva ruta\t 2.Modificar precios\t 3.Salir \t");
                             scanf ("%i",&b);
@@ -90,10 +96,14 @@ int main()
                                 printf("\nHasta la proxima");
                                 break;
                             }
-                            }while(flag!=1);
+                            }
+							while(flag!=1);
                         }
-                	}else if(contador==3){
-                        printf("Por motivos de seguridad seras redirigido al menu de inicio\n");
+                	}
+                	
+					else if(contador==4)
+					{
+                        printf("\n\tPor motivos de seguridad seras redirigido al menu de inicio\n");
                         Sleep(3000);
                         break;
                 	}
