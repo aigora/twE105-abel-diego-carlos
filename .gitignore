@@ -52,6 +52,11 @@ Mkfile.old
 dkms.conf
 
 # DevC++
-
+*.dev
 *.layout
 *.win
+
+#Code:Blocks
+*.cbp
+*.depend
+*.exe
