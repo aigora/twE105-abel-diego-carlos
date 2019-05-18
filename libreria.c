@@ -165,7 +165,7 @@ int nueva_ruta(FILE *pf,Ruta r){
     scanf("%f", &r.Distancia);
     fprintf(pf, "\n%s;%s;%f", r.Origen, r.Destino, r.Distancia);
     fclose(pf);
-    printf("\nRutas añadidas correctamente.\n\n");
+    printf("\nRutas agnadidas correctamente.\n\n");
     Sleep(2000);
 }
     float calcularprecio (FILE *pf,float distancia){

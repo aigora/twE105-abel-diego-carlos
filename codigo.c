@@ -74,7 +74,7 @@ int main()
                         }else{
                             do{
                                 system("cls");
-                                printf("Que desea hacer? 1.Introducir nueva ruta\t 2.Modificar precios\t 3.Salir");
+                                printf("Que desea hacer? 1.Introducir nueva ruta\t 2.Modificar precios\t 3.Salir \t");
                             scanf ("%i",&b);
                             fflush(stdin);
                             switch (b)
