@@ -1,5 +1,7 @@
 # TRANSFUTURE
-1. BREVE EXPLICACIÓN 
+
+**1. BREVE EXPLICACIÓN** 
+
 Hemos imaginado ser los dueños de una gran empresa de transporte de viajeros, y una gran empresa precisa una gran administración: conocer las rutas disponibles a la que damos servicio, introducir nuevas rutas, cambiar las tarifas, ser conocedor de los usuarios de nuestros servicios, etc. Al igual que nosotros como dueños de esta empresa ficticia a la que hemos denominado 'TRANFUTURE' necesitamos una herramienta que nos ampare en la administración de nuestro negocio, es necesaria igualmente una herramienta a la que los usuarios puedan acceder para organizar su viaje, conocer las rutas, conocer la tarifas, calcular el precio del billete y finalmente contratar nuestros servicios.
 Bien, esa herramienta es la que nosotros hemos creado. 
 Estas son las funciones especificas que se pueden realizar:
@@ -12,38 +14,111 @@ Estas son las funciones especificas que se pueden realizar:
     * Iniciar sesión ( el empleado o dueño, no cuenta con un nombre de usuario, cuenta con pin secreto establecido por la empresa con el que accede directamente a ajustes internos)
     * Introducir nuevas rutas ( el empleado puede implementar nuevas rutas, introduciendo el lugar de origen, destino asi como el numero de kilimetros)
     * Cambiar tarifas (el empleado goza de la posibilidad de cambiar el precio de las tarifas establecidas inicialmente)
-2. TUTORIAL
-Ahora que ya conocemos todas las funciones del programa, veamos paso por paso como utilizarlas:
-    1. INICIO
 
-       ![](https://github.com/aigora/twE105-abel-diego-carlos/blob/master/images/INICIO.PNG)
+**2. TUTORIAL**
 
-       Esta es la pantalla de inicio del programa ('home'), en la cual podemos elegir entre:
-        * Iniciar sesión ( pulsando la tecla 1, accederemos a la opción que nos permite introducir nuestro usuario y contraseña, ya registrados anteriormente, e iniciar sesion)
-        * Registrarnos ( pulsando la tecla 2, accederemos a la opción la cual nos permite registrarnos con un nombre de usuario y una contraseña )
-        * Salir ( pulsando la tecla 3, salimos del programa)
-   2. REGISTRO
+Ahora que ya conocemos todas las funciones del programa, veamos paso por paso como utilizarlas
 
-       Supongamos que aún no estamos registrados y en el 'home' hemos pulsado la techa 2 para acceder al menú de registro:
+1. INICIO
 
-       ![](https://github.com/aigora/twE105-abel-diego-carlos/blob/master/images/REGISTRO.PNG)
+![](https://github.com/aigora/twE105-abel-diego-carlos/blob/master/images/INICIO.PNG)
 
-       Nos serán solicitados un nombre de usuario (ej:carlos) y una contraseña(ej:123456) que debemos introducir, y presionar a tecla 'enter', para que estos datos queden almacenados, y posteriormente podamos iniciar sesión con ellos.
+Esta es la pantalla de inicio del programa ('home'), en la cual podemos elegir entre:
+* Iniciar sesión ( pulsando la tecla 1, accederemos a la opción que nos permite introducir nuestro usuario y contraseña, ya registrados anteriormente, e iniciar sesion)
+* Registrarnos ( pulsando la tecla 2, accederemos a la opción la cual nos permite registrarnos con un nombre de usuario y una contraseña )
+* Salir ( pulsando la tecla 3, salimos del programa)
+2. REGISTRO
+
+Supongamos que aún no estamos registrados y en el 'home' hemos pulsado la techa 2 para acceder al menú de registro:
+
+![](https://github.com/aigora/twE105-abel-diego-carlos/blob/master/images/REGISTRO.PNG)
+
+Nos serán solicitados un nombre de usuario (ej:carlos) y una contraseña(ej:123456) que debemos introducir, y presionar a tecla 'enter', para que estos datos queden almacenados, y posteriormente podamos iniciar sesión con ellos.
+
    3. INICIO DE SESIÓN
 
-       Una vez que nos hallamos registrados, en el 'home' deberemos pulsar la tecla 1, para iniciar sesión  en tal caso:
+ Una vez que nos hallamos registrados, en el 'home' deberemos pulsar la tecla 1, para iniciar sesión  en tal caso:
 
-        ![](https://github.com/aigora/twE105-abel-diego-carlos/blob/master/images/INICIO%20DE%20SESION%201.PNG)
+![](https://github.com/aigora/twE105-abel-diego-carlos/blob/master/images/INICIO%20DE%20SESION%201.PNG)
 
-         Se nos pide que distingamos si nos vamos a identificar como usuarios o como empleados:
-         - Como empleados, tecla (2): 
+Se nos pide que distingamos si nos vamos a identificar como usuarios o como empleados:
+- Como empleados, tecla (2): 
 
-             ![](https://github.com/aigora/twE105-abel-diego-carlos/blob/master/images/INICIO%20DE%20SISION%20EMPLEADO.PNG)
+![](https://github.com/aigora/twE105-abel-diego-carlos/blob/master/images/INICIO%20DE%20SISION%20EMPLEADO.PNG)
 
-              Tendremos que introducir directamente la 'clave secreta de la empresa' la cual, slo conocen los empleados ( 1234) y con ello accederemos a las opciones que se brindan al empleado.
-         - Como usuarios, tecla (1):
+Tendremos que introducir directamente la 'clave secreta de la empresa' la cual, sOlo conocen los empleados (123456) y con ello accederemos a las opciones que se brindan al empleado.
+- Como usuarios, tecla (1):
 
-              ![](https://github.com/aigora/twE105-abel-diego-carlos/blob/master/images/INICIO%20DE%20SESION%20USUARIO.PNG)
+![](https://github.com/aigora/twE105-abel-diego-carlos/blob/master/images/INICIO%20DE%20SESION%20USUARIO.PNG)
 
-              Tendremos que introducir el usuario y contraseña anteriormente registrados para acceder a las opciones que se le brindan al usuario´.
+Tendremos que introducir el usuario y contraseña anteriormente registrados para acceder a las opciones que se le brindan al usuario.
+
+   4. INICIO DE SESIÓN COMO USUARIO
+
+Una vez hallamos iniciado sesión como usuarios, comenzaremos a organizar nuestro viaje:
+
+![](https://github.com/aigora/twE105-abel-diego-carlos/blob/master/images/INICIO%20DE%20SESION%20COMO%20USUARIO.PNG)
+
+Tendremos que introducir el origen de nuestro viaje (MADRID) así como el destino (SEVILLA), seguidamente al pulsar 'ENTER', comprobara si la ruta esta disponible:
+
+- En el caso de que no esté disponible nos avisara de ello. (mas adelante veremos como el empleado si que puede introducir nuevas rutas):
+
+![](https://github.com/aigora/twE105-abel-diego-carlos/blob/master/images/RUTA%20NO%20DISPONIBLE.PNG)
+
+- En el caso de que la ruta si esté disponible:
+
+![](https://github.com/aigora/twE105-abel-diego-carlos/blob/master/images/detalles%20viaje.PNG)  
+
+Comenzaremos a establecer los detalles, tendremos que responder a una serie de preguntas en función de las cuales se configurará el precio del billete:
+
+![](https://github.com/aigora/twE105-abel-diego-carlos/blob/master/images/DETALLES%20VIAJE%202.PNG)
+
+ Como se puede observar, finalmente nos comunicara el precio final de nuestro billete.
+
+   5. INICIO DE SESIÓN COMO EMPLEADO
+
+En primer lugar introduciremos la clave de los empleados:
+
+![](https://github.com/aigora/twE105-abel-diego-carlos/blob/master/images/empleado1.PNG)
+
+- Si no es correcta:
+
+![](https://github.com/aigora/twE105-abel-diego-carlos/blob/master/images/empleado%20pin%20incorrecto.PNG)
+
+Nos informa de ello, y nos brinda de nuevo otro intento para introducir la contraseña, recordándonos que tenemos como máximo tres intentos. 
+Si en el segundo intento introducimos la contraseña correcta, accederemos alas opciones al empleado.
+Si continuamos fallando:
+
+![](https://github.com/aigora/twE105-abel-diego-carlos/blob/master/images/empleado3.PNG)
+
+Nos irá avisando del número de intentos que llevamos.
+Y cuando el numero de intentos sea superado:
+
+![](https://github.com/aigora/twE105-abel-diego-carlos/blob/master/images/empleado4.PNG)
+
+- Si es correcta, accederá al menú de empleado:
+
+![](https://github.com/aigora/twE105-abel-diego-carlos/blob/master/images/emplado5.PNG)
+
+Podremos elegir entre introducir nuevas rutas o cambiar los precios establecidos:
+
+(1)_Introducir nuevas rutas:_
+
+![](https://github.com/aigora/twE105-abel-diego-carlos/blob/master/images/NUEVA%20RUTA.PNG)
+
+Nos solicitara introducir el origen (MADRID) y el destino (ASTURIAS) así como la distancia en kilometros que existen entre origen y destino. 
+Si todo es correcto, pulsando la tecla 'ENTER', dicha ruta se guardará en los ficheros del programa para que este esté disponible para los usuarios.
+
+(2)_Modificar precios:_
+
+![](https://github.com/aigora/twE105-abel-diego-carlos/blob/master/images/modificar%20precios.PNG)
+
+Se nos pedirá introducir las nuevas tasas; teniendo en cuenta que:
+ * Para introducir el nuevo precio del kilometraje, tendremos que introducir el precio en euros que se va a cobrar por kilómetro recorrido (ej: 0.08€/km).
+ * Para introducir el nuevo suplemento del servicio nocturno, tendremos que introducir el tanto por uno en proporción al precio que queremos cobrar (ej: un 1% extra por servicio nocturno, escribiremos 0.01) esta cantidad será multiplicada por la distancia, y el resultado será el suplemento sobre el precio base, siendo el precio base el precio por kilómetro por el numero de kilómetros totales.
+ * Para introducir el nuevo suplemento por el servicio premium, seguiremos exactamente el mismo procedimiento que con el suplemento por el servicio nocturno.
+
+Es decir:
+
+PRECIO FINAL: precio base + suplemento por nocturnidad + suplemento por el servicio premium
 
