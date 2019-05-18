@@ -60,7 +60,7 @@ int main()
                				printf("El pin es incorrecto\tRecuerda que solo tienes tres intentos \t\t ");
                				printf("intento numero: %d",contador);
                				contador++;
-               				Sleep(4000);
+               				Sleep(2000);
 						}
                 	}
 					while (contador<4);
