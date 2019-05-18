@@ -100,7 +100,7 @@ float comprobar_ruta(FILE *pf){
         fclose(pf);
         if (flag!=1||flag2!=1){
             printf("LA RUTA NO ESTA EN NUESTRA BASE DE DATOS\n");
-            Sleep(2000);
+            Sleep(20000);
             return -1;
         }
         else {
