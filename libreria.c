@@ -140,12 +140,12 @@ int iniciar_sesion(FILE *pf){
                 flag2=comprobar_usuario(p1,p2);
                 if(flag2!=1){
                     contador++;
-                    printf("\nLa clave es incorrecta, pruebe de nuevo\n Recuerde que solo cuenta con %i intentos restantes",3-contador);
+                    printf("\n\nLa clave es incorrecta, pruebe de nuevo\n\n Recuerde que solo le quedan %i intentos\n",3-contador);
                 }
             }
             else{
                 contador++;
-                printf("\nEl usuario es incorrecto, pruebe de nuevo;\n Recuerde que solo cuenta con %i intentos restantes",3-contador);
+                printf("\n\nEl usuario es incorrecto, pruebe de nuevo;\n\n Recuerde que solo le quedan %i itentos\n",3-contador);
             }
         }
     }while (contador<3&&(flag!=1&&flag2!=1));

@@ -107,7 +107,7 @@ int main()
                 	
 					else if(contador==3)
 					{
-                        printf("\n\tPor motivos de seguridad seras redirigido al menu de inicio\n");
+                        printf("\n\tPor motivos de seguridad sera redirigido al menu de inicio\n");
                         Sleep(3000);
                         contador=0;
                         break;
