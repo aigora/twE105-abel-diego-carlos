@@ -55,8 +55,13 @@ dkms.conf
 *.dev
 *.layout
 *.win
+*.exe
+*.o
 
 #Code:Blocks
 *.cbp
 *.depend
 *.exe
+*.layout
+*.o
+*.win
