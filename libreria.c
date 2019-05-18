@@ -111,48 +111,49 @@ float comprobar_ruta(FILE *pf){
 
 }
 int iniciar_sesion(FILE *pf){
-    usuario user1;
-    int flag=0,flag2=0,contador=0;
-    char id[20],clave[20],*p1,*p2;
-    pf=fopen("usuarios.txt","r");
-    if(pf==NULL)
-        printf("ERROR AL ABRIR EL ARCHIVO");
-    else{
-        do{
-        if (contador!=0)
-            printf("\n Usuario o contrasegna incorrectos.\n Trate de iniciar sesion de nuevo\n");
-        printf("\n Usuario: ");
-        scanf(" %[^\n]",id);
-        _strupr(id);
-        fflush(stdin);
-        printf("\n Clave: ");
-        scanf("%[^\n]",clave);
-        fflush(stdin);
-        contador++;
-        while (feof(pf)==0&&(flag!=1||flag2!=1)){
-            fscanf(pf,"%[^;];%[^;];\n)",user1.id,user1.clave);
-            p1=id;
-            p2=user1.id;
-            flag=comprobar_usuario(p1,p2);
+    char *p1,*p2,id[20],clave[20],id2[20],clave2[20];
+    int flag,flag2,contador=0;
+    do{
+        flag=0;
+        flag2=0;
+        pf=fopen("usuarios.txt","r");
+        if(pf==NULL)
+            printf("ERROR AL ABRIR EL ARCHIVO");
+        else {
+            printf("\nIntroduzca su usuario:");
+            scanf("%s",id);
+            fflush(stdin);
+            printf("\nIntroduzca su clave:");
+            scanf("%s",clave);
+            fflush(stdin);
+            do{
+                fscanf(pf,"%[^;];%[^;];\n",id2,clave2);
+                p1=id;
+                p2=id2;
+                flag=comprobar_usuario(p1,p2);
+                }
+            while(feof(pf)==0&&flag!=1);
+            fclose(pf);
             if (flag==1){
                 p1=clave;
-                p2=user1.clave;
+                p2=clave2;
                 flag2=comprobar_usuario(p1,p2);
+                if(flag2!=1){
+                    contador++;
+                    printf("\nLa clave es incorrecta, pruebe de nuevo\n Recuerde que solo cuenta con %i intentos restantes",3-contador);
+                }
             }
-
+            else{
+                contador++;
+                printf("\nEl usuario es incorrecto, pruebe de nuevo;\n Recuerde que solo cuenta con %i intentos restantes",3-contador);
+            }
         }
-        }while (flag==0 && flag2==0 && contador<4);
-        fclose(pf);
-        if(flag==1&&flag2==1){
-            return 1;
-        }else if(flag!=1){
-            printf("Quizas no esta registrado, trate de registrarse antes de iniciar sesion\n");
-            return -1;
-        }else if(flag2!=1){
-            printf("La contraseña es incorrecta, pruebe de nuevo o registrese antes de iniciar sesion\n");
-            return -1;
-        }
-}
+    }while (contador<3&&(flag!=1&&flag2!=1));
+    if (flag==1&&flag2==1){
+        return 1;
+    }else{
+        return -1;
+    }
 }
 int nueva_ruta(FILE *pf,Ruta r){
     printf("\nIntroduce el origen: ");
