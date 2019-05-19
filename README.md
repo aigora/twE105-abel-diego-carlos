@@ -1,6 +1,6 @@
 # GESTION DE EMPRESA DE TRANSPORTE- TRANSFUTURE
 
-   ![](https://github.com/aigora/twE105-abel-diego-carlos/blob/master/images/logo.png)
+   ![](https://github.com/aigora/twE105-abel-diego-carlos/blob/master/logo.png)
 
 ## Integrantes del equipo
 
