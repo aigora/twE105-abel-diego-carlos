@@ -1,0 +1,17 @@
+
+**BREVE EXPLICACIÓN** 
+
+Hemos imaginado ser los dueños de una gran empresa de transporte de viajeros, y una gran empresa precisa una gran administración: conocer las rutas disponibles a las que damos servicio, introducir nuevas rutas, cambiar las tarifas, ser conocedor de los usuarios de nuestros servicios, etc. Al igual que nosotros como dueños de esta empresa ficticia a la que hemos denominado 'TRANFUTURE' necesitamos una herramienta que nos ampare en la administración de nuestro negocio, es necesaria igualmente una herramienta a la que los usuarios puedan acceder para organizar su viaje, conocer las rutas, conocer la tarifas, calcular el precio del billete y finalmente contratar nuestros servicios.
+Bien, esa herramienta es la que nosotros hemos creado. 
+Estas son las funciones especificas que se pueden realizar:
+* Usuarios:
+    * Registrarse e iniciar sesión si ya están registrados
+    * Elegir la ruta (así como comprobar si la ruta elegida esta disponible)
+    * Organizar el viaje: establecer la fecha de salida, la hora, así como elegir el servicio vip (dependiendo de la organización específica de cada viajero el precio será diferente, estableciendo diferentes suplementos dependiendo de las opciones elegidas)
+    * Calcular el precio final del billete
+* Empleados:
+    * Iniciar sesión ( el empleado o dueño, no cuenta con un nombre de usuario, cuenta con pin secreto establecido por la empresa con el que accede directamente a ajustes internos)
+    * Introducir nuevas rutas ( el empleado puede implementar nuevas rutas, introduciendo el lugar de origen, destino asi como el numero de kilimetros)
+    * Cambiar tarifas (el empleado goza de la posibilidad de cambiar el precio de las tarifas establecidas inicialmente)
+
+Además de crear un programa que responda a todas estas funciones, uno de nuestros objetivos principales desde el inicio del trabajo ha sido, crear un programa que responda ante una seguridad seria, es decir, hemos intentado que nuestro programa no sea vulnerable en cuanto al acceso de usuarios, empleados, contraseñas, etc.

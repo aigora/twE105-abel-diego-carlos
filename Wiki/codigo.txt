@@ -1,0 +1,64 @@
+Para un mayor entendimiento del código, en este apartado intentaremos explicar de forma clara el código que hemos utilizado para desarrollar el programa; para ello distinguimos dos grandes partes:
+
+ **1. La estructura general:** se pretende explicar de forma esquemática la estructura más externa del código, para comprender a rasgos generales la forma de trabajar de nuestro programa.
+
+ **2. Las funciones:** Veremos las funciones que hemos creado y para que las hemos utilizado.
+
+## 1. La estrucctura general:
+
+![](https://github.com/aigora/twE105-abel-diego-carlos/blob/master/images/11..PNG)
+
+Todo nuestro trabajo se encuentra bajo un 'do-while', gracias al cual conseguimos que una vez finalizada una tarea completa como registrarnos o iniciar sesión volvamos al menú principal.
+Y eso es precisamente lo primero que nos encontramos ahora:
+
+![](https://github.com/aigora/twE105-abel-diego-carlos/blob/master/images/2.PNG)
+
+El **menú principal**, la primera base de ramificaciones, que también se encuentra bajo un 'do-while' para asegurarnos que se indiquen los comandos correctos (1, 2 o 3), y si estos no son tecleados el bucle se repita una y otra vez hasta que se tecle un comando correcto.
+
+Y a continuación nos encontramos con el **'switch' principal:**
+
+![](https://github.com/aigora/twE105-abel-diego-carlos/blob/master/images/444.PNG)
+
+Dentro de este 'switch' se desarrolla el 99% del código del trabajo.
+
+Siendo:
+
+- **El 'case (1)'** todas las funciones de inicio de sesión, comprobar usuarios, organización del viaje, precios, nuevas rutas, cambiar tarifas, etc. Es decir todas las funciones que en el [tutorial](https://github.com/aigora/twE105-abel-diego-carlos/wiki/2.-Tutorial) se explican dentro del apartado "iniciar sesión" tanto como usuarios como empleados.
+
+- **El 'case (2)'** la función de resgistro, la cual configura el registro de nuevos usuarios, y comprueba si estos ya estan registrados.
+
+![](https://github.com/aigora/twE105-abel-diego-carlos/blob/master/images/case%202.PNG)
+
+- **El 'case (3)'** la función salir, que estará siempre en el menú principal, ya que al meter todo el código dentro de un 'do-while' una vez que terminemos de realizar una acción completa, el código nos devuelve al menú principal, pues el 'case (3)' es el escape de salida del programa, que nos permite salir una vez hallamos acabado todas las acciones deseadas.
+
+(ej: inicio el programa por primera vez, accedo al registro y me registro como nuevo usuario, una vez terminado el registro me devuelve al menú principal, y ahora que ya estoy registrado, inicio sesión y organizo un viaje, terminada esta acción, el programa de nuevo me lleva al menú principal, y ahora ya desde aquí presionando la tecla 3 y accediendo al case(3), el programa termina).
+
+![](https://github.com/aigora/twE105-abel-diego-carlos/blob/master/images/case3.PNG)
+
+## 2. Las funciones:
+
+En **'libreria.c'** encontramos las funciones, que utiliza el **'codigo.c'** para realizar las distintas acciones.
+
+**Función nuevo usuario**, es la que nos permite registrar nuevos usuarios, con un nombre y una contraseña que se almacenan en un fichero txt, asi como comprobar si el nombre de usuario ya está registrado.
+
+![](https://github.com/aigora/twE105-abel-diego-carlos/blob/master/images/fotos%20codigo/nuevo%20usuario.PNG)
+
+**Función comprobar ruta**, que permite ver si la ruta introducida por el usuario está disponible, asi como acceder al fichero donde se encuentran almacenadas todas las rutas disponibles y sus respectivas distancias y extraer la información. (las rutas y sus distancias, son datos reales extraidos de 'Google maps' )
+
+![](https://github.com/aigora/twE105-abel-diego-carlos/blob/master/images/fotos%20codigo/comprobar%20ruta.PNG)
+
+**Función iniciar sesión**, que permite comprobar si el usuario y contraseñas introducidos son correctos, y actuar en función de ello
+
+![](https://github.com/aigora/twE105-abel-diego-carlos/blob/master/images/fotos%20codigo/iniciar%20ses%C3%B3n.PNG)
+
+**Función nueva ruta**, permite introducir nuevas rutas que no se encuentren ya en el fichero externo de las rutas.
+
+![](https://github.com/aigora/twE105-abel-diego-carlos/blob/master/images/fotos%20codigo/nueva%20ruta.PNG)
+
+**Función calcular precio**, permite calcular el precio, en función de la ruta y las especificaciones del viaje (la fórmula utilizada para calcular el precio se explica mas detalladamente en [tutorial](https://github.com/aigora/twE105-abel-diego-carlos/wiki/2.-Tutorial)en el apartado " inciar sesión como empleados")
+
+![](https://github.com/aigora/twE105-abel-diego-carlos/blob/master/images/fotos%20codigo/calcular%20precio.PNG)
+
+**Función modificar precios**, que permite al usuario acceder al un fichero externo y modificar las tarifas establecidas inicialmente.
+
+![](https://github.com/aigora/twE105-abel-diego-carlos/blob/master/images/fotos%20codigo/modificar%20precios.PNG)
