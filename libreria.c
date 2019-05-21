@@ -201,13 +201,13 @@ void modificar_precios(FILE *pf){
         printf("ERROR AL ABRIR EL ARCHIVO");
     else{
         system("cls");
-        printf("\n\t\tIntroduzca el nuevo precio por kilometraje:");
+        printf("\n\tIntroduzca el nuevo precio por kilometraje:");
         scanf("%f",&km);
         fflush(stdin);
-        printf("\n\t\t Introduzca el nuevo precio por el servicio nocturno:");
+        printf("\n\tIntroduzca el nuevo precio por el servicio nocturno:");
         scanf("%f",&noche);
         fflush(stdin);
-        printf("\n\t\t Introduzca el nuevo precio por el servicio premium:");
+        printf("\n\tIntroduzca el nuevo precio por el servicio premium:");
         scanf("%f",&premium);
         fflush(stdin);
         fprintf(pf,"\t%f;%f;%f;",km,noche,premium);
