@@ -8,9 +8,8 @@
 
 int main()
 {
-	int a, b, c, flag, contador = 1, salida, pin, aux = 0;
+	int a, b, c, flag, contador = 1, pin;
 	float distancia,precio;
-	char id[20],clave[20];
 	char *p1,*p2;
 	FILE *puntero;
 	Ruta r;
