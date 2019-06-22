@@ -9,9 +9,9 @@
 int main()
 {
 	int a, b, c, flag, contador=2, pin;
-	float distancia,precio;
+	float dist,precio;
 	char *p1,*p2;
-	FILE *puntero;
+	FILE *punt, *punt2;
 	Ruta r;
 	do{
 		system("cls");
@@ -36,13 +36,13 @@ int main()
 				{
 	            	case 1:
 	            	    system("cls");
-	                	flag=iniciar_sesion(puntero);
+	                	flag=log_In(punt);
 	                    if (flag==1){
 	                        printf("\n > Bienvenido!\n\n");
-	                        distancia=comprobar_ruta(puntero);
-	                        if (distancia==-1)
+	                        dist=comp_Ruta(punt);
+	                        if (dist==-1)
 	                            break;
-	                        precio=calcularprecio(puntero,distancia);
+	                        precio=calc_Precio(punt,dist);
 	                    }else if(flag==-1){
 	                        printf(" > Usuario no registrado... Regístrese antes de iniciar sesion.\n");
 	                        Sleep(3000);
@@ -84,21 +84,34 @@ int main()
 	                            do
 								{
 		                            system("cls");
-		                            printf("\n > Opciones...\n\n\n 1) Rutas disponibles\n\n 2) Nueva ruta\n\n 3) Precios actuales\n\n 4) Modificar precios\n\n 5) Resetear rutas\n\n 6) Salir\n");
+		                            printf("\n > Elija una operacion:\n\n\n\t 1) Rutas disponibles\n\n\t 2) Nueva ruta\n\n\t");
+		                            printf(" 3) Precios actuales\n\n\t 4) Modificar precios\n\n\t 5) Resetear rutas\n\n\t 6) Salir\n");
 		                        scanf ("%i",&b);
 		                        fflush(stdin);
 			                        switch (b)
 			                        {
 			                            case 1:
-			                            nueva_ruta(file,r);
+			                            	
 			                            break;
+			                            
+			                            case 2:
+			                            	new_Ruta(file,r);
+			                            break;
+			                            
 			                            case 3:
-			                                modificar_precios(puntero);
+			                                rutas_Disp(punt2);
 			                            break;
+			                            
+			                            case 4:
+			                            	modif_Precio(punt);
+			                            break;
+			                            
 			                            case 5:
-			                            	flag=1;
-			                            	printf("\n Hasta la proxima");
+			                            	
 			                            break;
+			                            default:
+											flag=1;
+			                            	printf("\n Hasta la proxima");
 			                        }
 		                        }while(flag!=1);
 	                        }
@@ -116,7 +129,7 @@ int main()
 	            
 	
 			case 2:
-				nuevousuario(puntero);
+				new_Id(punt);
 	            printf("\n > Estas siendo redirigido al inicio...");
 	            Sleep(2000);
 	            break;

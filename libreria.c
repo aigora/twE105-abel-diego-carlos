@@ -2,7 +2,7 @@
 #include <windows.h>
 #include <string.h>
 
-int comprobar_usuario(char *p1,char *p2){
+int comp_Str(char *p1,char *p2){
     char a,b;
     int flag=1;
     while(*p1 != '\0'){
@@ -15,8 +15,8 @@ int comprobar_usuario(char *p1,char *p2){
         }
     return flag;
 }
-int nuevousuario(FILE *pf){
-    char id[20],clave[20],id2[20],s[20],*p1,*p2;
+int new_Id(FILE *pf){
+    char id[20],clave[13],id2[20],s[20],*p1,*p2;
     int flag=1,salida=1,b;
     char x;
     do{
@@ -24,58 +24,63 @@ int nuevousuario(FILE *pf){
         if (pf==NULL)
             printf("\n Error al intentar leer el archivo...\n");
         else{
-            printf ("Escribe tu usuario: ");
-            scanf ("%s",id);
+            printf ("\n Escribe tu usuario: ");
+            	scanf ("%s",id);
             _strupr(id);
             do{
                 fscanf(pf,"%[^;];%[^;];\n",id2,s);
                 p1=id;
                 p2=id2;
-                flag=comprobar_usuario(p1,p2);
+                flag=comp_Str(p1,p2);
             }while (feof(pf)==0&&flag!=1);
             fclose(pf);
             
             if (flag==0){
-                printf ("\nIntroduzca una contrasena: ");
+                printf ("\n Introduzca una contrasena: (de 4 a 12 caracteres)\n");
                 fflush(stdin);
-                scanf ("%s",clave);
+                	scanf ("%s",clave);
                 _strupr(clave);
                 b=strlen(clave);
-                while (b>20 || b<4){
-                    printf ("Error en la contrasena introducela de nuevo: \n");
-                    scanf (" %[^\n]",clave);
+                
+                while (b>12 || b<4)
+				{
+                    printf ("\n Contrasena no valida. Prueba con otra:\n");
+                    	scanf (" %[^\n]",clave);
+                    _strupr(clave);
                     b=strlen(clave);
                 }
+                
                 pf=fopen("usuarios.txt","a");
                 fprintf(pf,"%s;%s;\n",id,clave);
                 fclose (pf);
                 system ("cls");
-                printf("ESCRITURA REALIZADA CON EXITO");
+                printf("\n Te has registrado correctamente. Reinicia el programa para hacer efectivo el cambio.\n");
+                Sleep(2000);
                 salida=0;
             }
             else {
                 system("cls");
-                printf("El usuario ya esta registrado, pruebe con un usuario distinto\n");
+                printf(" Este nombre de usuario ya existe, pruebe con uno distinto\n");
             }
         }
     }while(salida!=0);
         Sleep(2000);
         return 0;
 }
-float comprobar_ruta(FILE *pf){
+float comp_Ruta(FILE *pf){
     int flag=0,flag2=0;
     Ruta ruta1;
     char Origen[20],Destino[20],*p1,*p2;
     pf=fopen("Distancias.txt","r");
     if (pf==NULL)
-        printf("ERROR AL ABRIR EL ARCHIVO");
+        printf("\n Error al intentar leer el archivo...\n");
     else{
-        printf("Introduzca el origen de su viaje:");
-        scanf("%[^\n]",Origen);
+        printf("\n Introduzca el origen de su viaje:\n");
+        	scanf("%[^\n]",Origen);
         _strupr(Origen);
-        printf("\nIntroduzca el destino de su viaje:");
+        printf("\n Introduzca el destino de su viaje:\n");
         fflush(stdin);
-        scanf("%[^\n]",Destino);
+        	scanf("%[^\n]",Destino);
         _strupr(Destino);
         //EN ESTE BUCLE WHILE SE VA BUSCANDO QUE Ruta1.Origen COINCIDA CON EL ORIGEN INTRODUCIDO POR EL USUARIO
         while (feof(pf)==0&&(flag!=1||flag2!=1)){
@@ -84,14 +89,14 @@ float comprobar_ruta(FILE *pf){
             // SI SON EL MISMO STRING O NO
             p1=Origen;
             p2=ruta1.Origen;
-            flag=comprobar_usuario(p1,p2);
+            flag=comp_Str(p1,p2);
             //SI FLAG VALE UNO, LOS STRING SON IGUALES; POR TANTO COMPROBAMOS SI EL DESTINO TAMBIEN COINCIDE
             if (flag==1){
                 system("cls");
                 printf("\nCOMPROBANDO DESTINO...");
                 p1=Destino;
                 p2=ruta1.Destino;
-                flag2=comprobar_usuario(p1,p2);
+                flag2=comp_Str(p1,p2);
             }
         }
         fclose(pf);
@@ -103,11 +108,10 @@ float comprobar_ruta(FILE *pf){
         else {
          return ruta1.Distancia;
         }
-
     }
 
 }
-int iniciar_sesion(FILE *pf){
+int log_In(FILE *pf){
     char *p1,*p2,id[20],clave[20],id2[20],clave2[20];
     int flag,flag2,contador=0;
     do{
@@ -129,14 +133,14 @@ int iniciar_sesion(FILE *pf){
                 fscanf(pf,"%[^;];%[^;];\n",id2,clave2);
                 p1=id;
                 p2=id2;
-                flag=comprobar_usuario(p1,p2);
+                flag=comp_Str(p1,p2);
                 }
             while(feof(pf)==0&&flag!=1);
             fclose(pf);
             if (flag==1){
                 p1=clave;
                 p2=clave2;
-                flag2=comprobar_usuario(p1,p2);
+                flag2=comp_Str(p1,p2);
                 if(flag2!=1){
                     contador++;
                     printf("\n\nLa clave es incorrecta, pruebe de nuevo\n\n Recuerde que solo le quedan %i intentos\n",3-contador);
@@ -154,7 +158,8 @@ int iniciar_sesion(FILE *pf){
         return -1;
     }
 }
-int nueva_ruta(FILE *pf,Ruta r){
+
+int new_Ruta(FILE *pf,Ruta r){
     printf("\nIntroduce el origen: ");
     scanf("%s", &r.Origen);
     _strupr (r.Origen);
@@ -168,32 +173,34 @@ int nueva_ruta(FILE *pf,Ruta r){
     printf("\nRutas agnadidas correctamente.\n\n");
     Sleep(2000);
 }
-    float calcularprecio (FILE *pf,float distancia){
-        int a;
-        float precio,premium,km,noche;
-        pf=fopen("precios.txt","r");
-        fscanf(pf,"%f;%f;%f;",&km,&noche,&premium);
-        fclose(pf);
-        do{
-            fflush(stdin);
-            printf("\nVa a realizar el viaje de noche?\n 1.SI\t2.NO:");
-            scanf("%i",&a);
-            if (a==1)
-                precio=distancia*noche;
-        }while(a!=1&&a!=2);
-        do{
-            printf("\nDesea tener el servicio premium (cargador,conexion a Internet,etc) en su viaje:\n 1.SI\t 2.NO:");
-            scanf("%i",&a);
-            fflush(stdin);
-            if (a==1)
-                precio+=distancia*premium;
-        }while(a!=1&&a!=2);
-        precio+=distancia*km;
-        printf("\nEl precio final de tu viaje seria de %f ",precio);
-        Sleep(5000);
-        return precio;
+
+float calc_Precio (FILE *pf,float dist){
+    int a;
+    float precio,premium,km,noche;
+    pf=fopen("precios.txt","r");
+    fscanf(pf,"%f;%f;%f;",&km,&noche,&premium);
+    fclose(pf);
+    do{
+        fflush(stdin);
+        printf("\nVa a realizar el viaje de noche?\n 1.SI\t2.NO:");
+        scanf("%i",&a);
+        if (a==1)
+            precio=dist*noche;
+    }while(a!=1&&a!=2);
+    do{
+        printf("\nDesea tener el servicio premium (cargador,conexion a Internet,etc) en su viaje:\n 1.SI\t 2.NO:");
+        scanf("%i",&a);
+        fflush(stdin);
+        if (a==1)
+            precio+=dist*premium;
+    }while(a!=1&&a!=2);
+    precio+=dist*km;
+    printf("\nEl precio final de tu viaje seria de %g euros.",precio);
+    Sleep(5000);
+    return precio;
 }
-void modificar_precios(FILE *pf){
+
+void modif_Precio(FILE *pf){
     float km,premium,noche;
     pf=fopen("precios.txt","w");
     if(pf==NULL)
@@ -201,17 +208,37 @@ void modificar_precios(FILE *pf){
     else{
         system("cls");
         printf("\n\tIntroduzca el nuevo precio por kilometraje:");
-        scanf("%f",&km);
+        	scanf("%f",&km);
         fflush(stdin);
         printf("\n\tIntroduzca el nuevo precio por el servicio nocturno:");
-        scanf("%f",&noche);
+        	scanf("%f",&noche);
         fflush(stdin);
         printf("\n\tIntroduzca el nuevo precio por el servicio premium:");
-        scanf("%f",&premium);
+        	scanf("%f",&premium);
         fflush(stdin);
         fprintf(pf,"\t%f;%f;%f;",km,noche,premium);
         fclose(pf);
         system("cls");
         printf("ACTUALIZACION DE LOS PRECIOS REALIZADA CON EXITO");
     }
+}
+
+void rutas_Disp(FILE *pf){
+	double km, noche, prem;
+	system("cls");
+	pf = open("precios.txt","r");
+	if(pf=NULL){
+		printf("\n Error al intentar leer el archivo...\n");
+	}else{
+		fscanf(pf,"%f;%f;%f", &km, &noche, &prem);
+		fclose(pf);
+	
+		printf("\n > Listado de precios:");
+		printf("\n\n\n\t- Kilometro: %d euros",km);
+		printf("\n\n\t- Servicio nocturno: %d euros",noche);
+		printf("\n\n\t- Clase premium: %d euros",prem);
+		printf("\n\n\n Pulsa cualquier tecla para volver atras...");
+		getch();
+	}
+	
 }

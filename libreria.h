@@ -12,10 +12,13 @@ typedef struct {
     char clave[20];
 }usuario;
 
-int nuevousuario(FILE *pf);
-int comprobar_usuario(char *p1,char *p2);
-float comprobar_ruta(FILE *pf);
-int iniciar_sesion(FILE *pf);
-int nueva_ruta(FILE *pf,Ruta r);
-float calcularprecio (FILE *pf,float distancia);
-void modificar_precios(FILE *pf);
+int new_Id(FILE *pf);
+int comp_Str(char *p1,char *p2);
+float comp_Ruta(FILE *pf);
+int log_In(FILE *pf);
+int new_Ruta(FILE *pf,Ruta r);
+float calc_Precio(FILE *pf,float dist);
+void modif_Precio(FILE *pf);
+
+void rutas_Disp(FILE *pf);
+void precios_Act(FILE *pf);
