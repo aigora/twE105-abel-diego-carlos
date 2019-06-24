@@ -99,7 +99,7 @@ int main()
 			                            break;
 			                            
 			                            case 3:
-			                                rutas_Disp(punt2);
+			                                precios_Act(punt2);
 			                            break;
 			                            
 			                            case 4:
@@ -127,7 +127,6 @@ int main()
 				}		
 	            break;
 	            
-	
 			case 2:
 				new_Id(punt);
 	            printf("\n > Estas siendo redirigido al inicio...");

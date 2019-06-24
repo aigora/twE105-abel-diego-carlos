@@ -93,7 +93,6 @@ float comp_Ruta(FILE *pf){
             //SI FLAG VALE UNO, LOS STRING SON IGUALES; POR TANTO COMPROBAMOS SI EL DESTINO TAMBIEN COINCIDE
             if (flag==1){
                 system("cls");
-                printf("\nCOMPROBANDO DESTINO...");
                 p1=Destino;
                 p2=ruta1.Destino;
                 flag2=comp_Str(p1,p2);
@@ -101,7 +100,7 @@ float comp_Ruta(FILE *pf){
         }
         fclose(pf);
         if (flag!=1||flag2!=1){
-            printf("LA RUTA NO ESTA EN NUESTRA BASE DE DATOS\n");
+            printf("\n Esta ruta no esta en nuestra base de datos...\n");
             Sleep(2000);
             return -1;
         }
@@ -119,13 +118,13 @@ int log_In(FILE *pf){
         flag2=0;
         pf=fopen("usuarios.txt","r");
         if(pf==NULL)
-            printf("ERROR AL ABRIR EL ARCHIVO");
+            printf(" Error al intentar leer el archivo");
         else {
-            printf("\nIntroduzca su usuario:");
+            printf("\n Introduzca su usuario:");
             scanf("%s",id);
             _strupr(id);
             fflush(stdin);
-            printf("\nIntroduzca su clave:");
+            printf("\n Introduzca su clave:");
             scanf("%s",clave);
             _strupr(clave);
             fflush(stdin);
@@ -143,12 +142,12 @@ int log_In(FILE *pf){
                 flag2=comp_Str(p1,p2);
                 if(flag2!=1){
                     contador++;
-                    printf("\n\nLa clave es incorrecta, pruebe de nuevo\n\n Recuerde que solo le quedan %i intentos\n",3-contador);
+                    printf("\n\n La clave es incorrecta. Le quedan %i intentos.\n",3-contador);
                 }
             }
             else{
                 contador++;
-                printf("\n\nEl usuario es incorrecto, pruebe de nuevo;\n\n Recuerde que solo le quedan %i itentos\n",3-contador);
+                printf("\n\n El usuario es incorrecto. Le quedan %i intentos.\n",3-contador);
             }
         }
     }while (contador<3&&(flag!=1&&flag2!=1));
@@ -160,17 +159,17 @@ int log_In(FILE *pf){
 }
 
 int new_Ruta(FILE *pf,Ruta r){
-    printf("\nIntroduce el origen: ");
+    printf("\n Introduce el origen: ");
     scanf("%s", &r.Origen);
     _strupr (r.Origen);
-    printf("Introduce el destino: ");
+    printf("\n Introduce el destino: ");
     scanf("%s", &r.Destino);
     _strupr (r.Destino);
-    printf("Introduce la distancia: ");
+    printf("\n Introduce la distancia: ");
     scanf("%f", &r.Distancia);
     fprintf(pf, "\n%s;%s;%f", r.Origen, r.Destino, r.Distancia);
     fclose(pf);
-    printf("\nRutas agnadidas correctamente.\n\n");
+    printf("\n > Rutas anadidas correctamente.\n\n");
     Sleep(2000);
 }
 
@@ -182,20 +181,20 @@ float calc_Precio (FILE *pf,float dist){
     fclose(pf);
     do{
         fflush(stdin);
-        printf("\nVa a realizar el viaje de noche?\n 1.SI\t2.NO:");
+        printf("\n Horario del viaje:\n\n\t 1) Diurno \n\n\t 2) Nocturno \n\t");
         scanf("%i",&a);
-        if (a==1)
+        if (a==2)
             precio=dist*noche;
     }while(a!=1&&a!=2);
     do{
-        printf("\nDesea tener el servicio premium (cargador,conexion a Internet,etc) en su viaje:\n 1.SI\t 2.NO:");
+        printf("\n Desea tener el servicio premium (wifi, asiento reclinable,etc):\n\n\t 1) Si \n\n\t 2) No\n\t");
         scanf("%i",&a);
         fflush(stdin);
         if (a==1)
             precio+=dist*premium;
     }while(a!=1&&a!=2);
     precio+=dist*km;
-    printf("\nEl precio final de tu viaje seria de %g euros.",precio);
+    printf("\n El precio final de tu viaje seria de %g euros.",precio);
     Sleep(5000);
     return precio;
 }
@@ -207,23 +206,23 @@ void modif_Precio(FILE *pf){
         printf("ERROR AL ABRIR EL ARCHIVO");
     else{
         system("cls");
-        printf("\n\tIntroduzca el nuevo precio por kilometraje:");
+        printf("\n\t Introduzca el nuevo precio por kilometraje:");
         	scanf("%f",&km);
         fflush(stdin);
-        printf("\n\tIntroduzca el nuevo precio por el servicio nocturno:");
+        printf("\n\t Introduzca el nuevo precio por el servicio nocturno:");
         	scanf("%f",&noche);
         fflush(stdin);
-        printf("\n\tIntroduzca el nuevo precio por el servicio premium:");
+        printf("\n\t Introduzca el nuevo precio por el servicio premium:");
         	scanf("%f",&premium);
         fflush(stdin);
         fprintf(pf,"\t%f;%f;%f;",km,noche,premium);
         fclose(pf);
         system("cls");
-        printf("ACTUALIZACION DE LOS PRECIOS REALIZADA CON EXITO");
+        printf("\n Operacion realizada con exito. Reinicie el programa para hacer efectivos los cambios.");
     }
 }
 
-void rutas_Disp(FILE *pf){
+void precios_Act(FILE *pf){
 	double km, noche, prem;
 	system("cls");
 	pf = open("precios.txt","r");
