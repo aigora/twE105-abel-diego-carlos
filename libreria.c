@@ -222,22 +222,33 @@ void modif_Precio(FILE *pf){
     }
 }
 
-void precios_Act(FILE *pf){
-	double km, noche, prem;
+void precios_Act(FILE *pf, Precio p){
 	system("cls");
 	pf = open("precios.txt","r");
 	if(pf=NULL){
 		printf("\n Error al intentar leer el archivo...\n");
 	}else{
-		fscanf(pf,"%f;%f;%f", &km, &noche, &prem);
+		fscanf(pf,"%f;%f;%f", p.km, p.hora, p.prem);
 		fclose(pf);
 	
 		printf("\n > Listado de precios:");
-		printf("\n\n\n\t- Kilometro: %d euros",km);
-		printf("\n\n\t- Servicio nocturno: %d euros",noche);
-		printf("\n\n\t- Clase premium: %d euros",prem);
+		printf("\n\n\n\t- Kilometro: %d euros",p.km);
+		printf("\n\n\t- Servicio nocturno: %d euros",p.hora);
+		printf("\n\n\t- Clase premium: %d euros",p.prem);
 		printf("\n\n\n Pulsa cualquier tecla para volver atras...");
 		getch();
 	}
 	
+}
+
+
+
+int cuent_lin(FILE *pf){
+	char c;
+	int Line;
+		while (fscanf(pf, "%c", &c) != EOF) {
+			if (c == '\n')
+				Line++;
+		}
+	return Line;
 }

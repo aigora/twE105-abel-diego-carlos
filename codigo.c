@@ -13,6 +13,7 @@ int main()
 	char *p1,*p2;
 	FILE *punt, *punt2;
 	Ruta r;
+	Precio p;
 	do{
 		system("cls");
 
@@ -99,7 +100,7 @@ int main()
 			                            break;
 			                            
 			                            case 3:
-			                                precios_Act(punt2);
+			                                precios_Act(punt2, p);
 			                            break;
 			                            
 			                            case 4:

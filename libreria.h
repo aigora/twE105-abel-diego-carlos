@@ -12,6 +12,12 @@ typedef struct {
     char clave[20];
 }usuario;
 
+typedef struct{
+	float km;
+	float hora;
+	float prem;
+}Precio;
+
 int new_Id(FILE *pf);
 int comp_Str(char *p1,char *p2);
 float comp_Ruta(FILE *pf);
@@ -21,4 +27,5 @@ float calc_Precio(FILE *pf,float dist);
 void modif_Precio(FILE *pf);
 
 void rutas_Disp(FILE *pf);
-void precios_Act(FILE *pf);
+void precios_Act(FILE *pf, Precio p);
+int cuent_lin(FILE *pf);
